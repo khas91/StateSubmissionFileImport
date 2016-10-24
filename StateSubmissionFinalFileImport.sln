@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "StateSubmissionFinalFileImport", "StateSubmissionFinalFileImport\StateSubmissionFinalFileImport.dtproj", "{4E913AEB-216A-43BD-BE22-4C13928F8CEA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E913AEB-216A-43BD-BE22-4C13928F8CEA}.Development|Default.ActiveCfg = Development
+		{4E913AEB-216A-43BD-BE22-4C13928F8CEA}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

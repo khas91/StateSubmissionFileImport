@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="query">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="PROCESS_INSTANCE" type="xs:unsignedShort" />
+              <xs:element minOccurs="0" name="EMPLID" type="xs:string" />
+              <xs:element minOccurs="0" name="APR_DE0010_RPRT_ID"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="7" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0015_TRM_ID">  <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="5" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0020_PRSN_ID"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="9" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0030_LAST_NM"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="20" /></xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0031_FRST_NM"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="15" /></xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0032_MDL_NM">  <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="20" /></xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0035_GENDER">  <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0050_CTZNSHP"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0060_DT_EMPL"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="8" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0080_TEMP">    <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0090_FL_PRT">  <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0095_EXEMPT">  <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0100_ANNLSAL"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="6" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0110_BRTH_DT"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="8" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0120_POS_TTL"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="25" /></xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0130_OAC">     <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="2" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0150_RANK">    <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0160_DGHGERN"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0170_LEAVETY"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0180_TENURE">  <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0185_FACULTY"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0190_TEN_DT">  <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="8" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0225_EAM_IND"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0235_RACE_WH"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0240_RACE_BL"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0245_RACE_AS"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0250_RACE_AI"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0255_RACE_HA"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0260_ETH_HI">  <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0265_MTH_EMP"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="2" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0270_CON_STA"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="APR_DE0280_NM_SUFF"> <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="10" /></xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="FLORIDA_EDUCAT_ID">  <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="14" /></xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="SUBMISSION_TYPE">    <xs:simpleType> <xs:restriction base="xs:string"> <xs:maxLength value="1" /> </xs:restriction> </xs:simpleType> </xs:element>
+              <xs:element minOccurs="0" name="ACTION_DTTM" type="xs:string" />
+              <xs:element minOccurs="0" name="ROWSTATUS" type="xs:string" />
+              <xs:element minOccurs="0" name="INSTCREATEDTTM" type="xs:string" />
+            </xs:sequence>
+            <xs:attribute name="rownumber" type="xs:unsignedShort" use="optional" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numrows" type="xs:unsignedShort" use="optional" />
+      <xs:attribute name="queryname" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
