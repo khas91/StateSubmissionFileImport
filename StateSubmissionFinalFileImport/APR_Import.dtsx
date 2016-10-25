@@ -11,12 +11,1822 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="APR_Import"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{BCE28273-519E-4EF8-8665-55B77CBA484F}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{CE73DBE6-4281-4F13-B8EA-EE4080F00FAE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
-  <DTS:Executables />
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[APR Build File]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{53B8EC10-4DA4-479B-907C-63910808C5E2}"
+      DTS:ObjectName="APR Build File">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::FileLocation]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 0"
+              DTS:DTSID="{B7B110FD-6D96-481D-9973-6617772D1D97}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[vulcan.StateSubmission]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C9F9E122-27B8-491D-A21D-9DE6DDE98D74}"
+      DTS:ObjectName="vulcan.StateSubmission">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=vulcan;Initial Catalog=StateSubmission;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C40CBE52-F821-4613-A8EF-D589D27F9D7D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="apr_file_name">
+      <DTS:VariableValue
+        DTS:DataType="8">staff.tpd2017</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8C7CC2FA-3226-4630-8939-B606FC69661D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileLocation">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{72EF0730-5E42-444E-8E13-DEFC6A0DE04A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SubmissionDate">
+      <DTS:VariableValue
+        DTS:DataType="8">10/26/2016</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\ClearGenericTable"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FF0EDE6D-A244-48F4-B7F9-84ABD33F6399}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ClearGenericTable"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C9F9E122-27B8-491D-A21D-9DE6DDE98D74}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE StateSubmission.Import.GenericImportedAnnualPersonnelSubmission" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\CreateHistoryTable"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{04B41F52-B7F0-4590-A942-A45BD6359086}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CreateHistoryTable"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C9F9E122-27B8-491D-A21D-9DE6DDE98D74}"
+          SQLTask:SqlStatementSource="declare @str varchar(50)&#xA;set @str = replace(?,'.','_')&#xA;&#xA;exec ('&#xA;select * into [History].[' + @str + ']&#xA;from Import.GenericImportedAnnualPersonnelSubmission&#xA;')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@str"
+            SQLTask:DtsVariableName="User::apr_file_name"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\MergeIntoGenericTable"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{4C36A1B6-07E2-4DA5-BFE0-43EE35814B92}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="MergeIntoGenericTable"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\MergeIntoGenericTable\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MergeIntoGenericTable\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[APR Build File]"
+                  connectionManagerRefId="Package.ConnectionManagers[APR Build File]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\MergeIntoGenericTable\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MergeIntoGenericTable\Flat File Source.Outputs[Flat File Source Output].Columns[Column 0]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeIntoGenericTable\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 0]"
+                      length="255"
+                      lineageId="Package\MergeIntoGenericTable\Flat File Source.Outputs[Flat File Source Output].Columns[Column 0]"
+                      name="Column 0"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MergeIntoGenericTable\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Column 0" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\MergeIntoGenericTable\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MergeIntoGenericTable\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\MergeIntoGenericTable\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\MergeIntoGenericTable\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MergeIntoGenericTable\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MergeIntoGenericTable\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MergeIntoGenericTable\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\MergeIntoGenericTable\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Import].[GenericImportedAnnualPersonnelSubmission]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MergeIntoGenericTable\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  connectionManagerRefId="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\MergeIntoGenericTable\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\MergeIntoGenericTable\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 0]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Column 0"
+                      externalMetadataColumnId="Package\MergeIntoGenericTable\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Filler]"
+                      lineageId="Package\MergeIntoGenericTable\Flat File Source.Outputs[Flat File Source Output].Columns[Column 0]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MergeIntoGenericTable\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Filler]"
+                      codePage="1252"
+                      dataType="text"
+                      name="Filler" />
+                    <externalMetadataColumn
+                      refId="Package\MergeIntoGenericTable\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EOF]"
+                      codePage="1252"
+                      dataType="text"
+                      name="EOF" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\MergeIntoGenericTable\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\MergeIntoGenericTable\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MergeIntoGenericTable\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MergeIntoGenericTable\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MergeIntoGenericTable\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MergeIntoGenericTable\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\MergeIntoGenericTable.Paths[Flat File Source Output]"
+              endId="Package\MergeIntoGenericTable\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\MergeIntoGenericTable\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\MergeRT1IntoStateSubmission"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{FE830983-74D1-4D62-A714-199C6AF0E1AD}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="MergeRT1IntoStateSubmission"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\MergeRT1IntoStateSubmission\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\MergeRT1IntoStateSubmission\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\MergeRT1IntoStateSubmission\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\MergeRT1IntoStateSubmission\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\Derived Column.Outputs[Derived Column Output].Columns[SubmissionDate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\MergeRT1IntoStateSubmission\Derived Column.Outputs[Derived Column Output].Columns[SubmissionDate]"
+                      name="SubmissionDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,10,1252)@[User::SubmissionDate]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,10,1252)@[User::SubmissionDate]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\MergeRT1IntoStateSubmission\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\MergeRT1IntoStateSubmission\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MergeRT1IntoStateSubmission\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MergeRT1IntoStateSubmission\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[APR].[RecordType1]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  connectionManagerRefId="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0010_OPEID]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0010_OPEID"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0010_OPEID]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0010_OPEID]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0020_PID]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0020_PID"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0020_PID]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0020_PID]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0031_First_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0031_First_Name"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0031_First_Name]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0031_First_Name]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0035_Gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0035_Gender"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0035_Gender]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0035_Gender]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0050_Citizenship]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0050_Citizenship"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0050_Citizenship]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0050_Citizenship]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0060_Date_Hired]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0060_Date_Hired"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0060_Date_Hired]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0060_Date_Hired]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0070_Terms_Employed]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0070_Terms_Employed"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0070_Terms_Employed]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0070_Terms_Employed]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0080_Temp]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0080_Temp"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0080_Temp]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0080_Temp]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0090_Full_Time]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0090_Full_Time"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0090_Full_Time]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0090_Full_Time]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0100_Ann_Salary]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0100_Ann_Salary"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0100_Ann_Salary]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0100_Ann_Salary]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0110_Birth_date]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0110_Birth_date"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0110_Birth_date]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0110_Birth_date]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0120_Position_Title]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0120_Position_Title"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0120_Position_Title]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0120_Position_Title]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0130_OAC]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0130_OAC"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0130_OAC]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0130_OAC]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0150_Rank]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0150_Rank"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0150_Rank]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0150_Rank]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0160_Degree]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0160_Degree"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0160_Degree]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0160_Degree]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0170_Leave_Type]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0170_Leave_Type"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0170_Leave_Type]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0170_Leave_Type]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0180_Tenure_Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0180_Tenure_Status"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0180_Tenure_Status]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0180_Tenure_Status]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0190_Tenure_Date]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0190_Tenure_Date"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0190_Tenure_Date]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0190_Tenure_Date]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0235_Race_White]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0235_Race_White"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0235_Race_White]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0235_Race_White]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0240_Race_Black]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0240_Race_Black"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0240_Race_Black]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0240_Race_Black]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0245_Race_Asian]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0245_Race_Asian"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0245_Race_Asian]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0245_Race_Asian]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0250_Race_Native]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0250_Race_Native"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0250_Race_Native]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0250_Race_Native]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0255_Race_Hawaiian]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0255_Race_Hawaiian"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0255_Race_Hawaiian]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0255_Race_Hawaiian]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0260_Race_Hispanic]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0260_Race_Hispanic"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0260_Race_Hispanic]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0260_Race_Hispanic]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0265_Months_Employed]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0265_Months_Employed"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0265_Months_Employed]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0265_Months_Employed]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0270_Contract_Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0270_Contract_Status"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0270_Contract_Status]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0270_Contract_Status]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0275_Credit_Category]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0275_Credit_Category"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0275_Credit_Category]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0275_Credit_Category]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0225_EAM_Indicator]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0225_EAM_Indicator"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0225_EAM_Indicator]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0225_EAM_Indicator]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0095_Exempt]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0095_Exempt"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0095_Exempt]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0095_Exempt]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0185_Faculty_Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0185_Faculty_Status"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0185_Faculty_Status]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0185_Faculty_Status]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0015_FLEID]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0015_FLEID"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0015_FLEID]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0015_FLEID]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0030_Last_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0030_Last_Name"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0030_Last_Name]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0030_Last_Name]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0032_Middle_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0032_Middle_Name"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0032_Middle_Name]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0032_Middle_Name]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0280_Suffix]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0280_Suffix"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0280_Suffix]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0280_Suffix]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SubmissionDate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="SubmissionDate"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubmissionDate]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\Derived Column.Outputs[Derived Column Output].Columns[SubmissionDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0010_OPEID]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0010_OPEID" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0020_PID]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0020_PID" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0031_First_Name]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0031_First_Name" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0035_Gender]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0035_Gender" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0050_Citizenship]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0050_Citizenship" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0060_Date_Hired]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0060_Date_Hired" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0070_Terms_Employed]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0070_Terms_Employed" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0080_Temp]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0080_Temp" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0090_Full_Time]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0090_Full_Time" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0100_Ann_Salary]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0100_Ann_Salary" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0110_Birth_date]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0110_Birth_date" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0120_Position_Title]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0120_Position_Title" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0130_OAC]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0130_OAC" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0150_Rank]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0150_Rank" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0160_Degree]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0160_Degree" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0170_Leave_Type]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0170_Leave_Type" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0180_Tenure_Status]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0180_Tenure_Status" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0190_Tenure_Date]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0190_Tenure_Date" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0235_Race_White]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0235_Race_White" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0240_Race_Black]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0240_Race_Black" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0245_Race_Asian]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0245_Race_Asian" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0250_Race_Native]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0250_Race_Native" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0255_Race_Hawaiian]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0255_Race_Hawaiian" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0260_Race_Hispanic]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0260_Race_Hispanic" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0265_Months_Employed]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0265_Months_Employed" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0270_Contract_Status]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0270_Contract_Status" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0275_Credit_Category]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0275_Credit_Category" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0225_EAM_Indicator]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0225_EAM_Indicator" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0095_Exempt]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0095_Exempt" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0185_Faculty_Status]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0185_Faculty_Status" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0015_FLEID]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0015_FLEID" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0030_Last_Name]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0030_Last_Name" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0032_Middle_Name]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0032_Middle_Name" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0280_Suffix]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0280_Suffix" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubmissionDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="SubmissionDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\MergeRT1IntoStateSubmission\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[vwAPRRecordType1]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  connectionManagerRefId="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0010_OPEID]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0010_OPEID]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0010_OPEID]"
+                      name="DE0010_OPEID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0020_PID]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0020_PID]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0020_PID]"
+                      name="DE0020_PID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0031_First_Name]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0031_First_Name]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0031_First_Name]"
+                      name="DE0031_First_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0035_Gender]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0035_Gender]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0035_Gender]"
+                      name="DE0035_Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0050_Citizenship]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0050_Citizenship]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0050_Citizenship]"
+                      name="DE0050_Citizenship"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0060_Date_Hired]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0060_Date_Hired]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0060_Date_Hired]"
+                      name="DE0060_Date_Hired"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0070_Terms_Employed]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0070_Terms_Employed]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0070_Terms_Employed]"
+                      name="DE0070_Terms_Employed"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0080_Temp]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0080_Temp]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0080_Temp]"
+                      name="DE0080_Temp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0090_Full_Time]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0090_Full_Time]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0090_Full_Time]"
+                      name="DE0090_Full_Time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0100_Ann_Salary]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0100_Ann_Salary]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0100_Ann_Salary]"
+                      name="DE0100_Ann_Salary"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0110_Birth_date]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0110_Birth_date]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0110_Birth_date]"
+                      name="DE0110_Birth_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0120_Position_Title]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0120_Position_Title]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0120_Position_Title]"
+                      name="DE0120_Position_Title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0130_OAC]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0130_OAC]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0130_OAC]"
+                      name="DE0130_OAC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0150_Rank]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0150_Rank]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0150_Rank]"
+                      name="DE0150_Rank"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0160_Degree]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0160_Degree]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0160_Degree]"
+                      name="DE0160_Degree"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0170_Leave_Type]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0170_Leave_Type]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0170_Leave_Type]"
+                      name="DE0170_Leave_Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0180_Tenure_Status]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0180_Tenure_Status]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0180_Tenure_Status]"
+                      name="DE0180_Tenure_Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0190_Tenure_Date]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0190_Tenure_Date]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0190_Tenure_Date]"
+                      name="DE0190_Tenure_Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0235_Race_White]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0235_Race_White]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0235_Race_White]"
+                      name="DE0235_Race_White"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0240_Race_Black]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0240_Race_Black]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0240_Race_Black]"
+                      name="DE0240_Race_Black"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0245_Race_Asian]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0245_Race_Asian]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0245_Race_Asian]"
+                      name="DE0245_Race_Asian"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0250_Race_Native]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0250_Race_Native]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0250_Race_Native]"
+                      name="DE0250_Race_Native"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0255_Race_Hawaiian]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0255_Race_Hawaiian]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0255_Race_Hawaiian]"
+                      name="DE0255_Race_Hawaiian"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0260_Race_Hispanic]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0260_Race_Hispanic]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0260_Race_Hispanic]"
+                      name="DE0260_Race_Hispanic"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0265_Months_Employed]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0265_Months_Employed]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0265_Months_Employed]"
+                      name="DE0265_Months_Employed"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0270_Contract_Status]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0270_Contract_Status]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0270_Contract_Status]"
+                      name="DE0270_Contract_Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0275_Credit_Category]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0275_Credit_Category]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0275_Credit_Category]"
+                      name="DE0275_Credit_Category"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0225_EAM_Indicator]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0225_EAM_Indicator]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0225_EAM_Indicator]"
+                      name="DE0225_EAM_Indicator"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0095_Exempt]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0095_Exempt]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0095_Exempt]"
+                      name="DE0095_Exempt"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0185_Faculty_Status]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0185_Faculty_Status]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0185_Faculty_Status]"
+                      name="DE0185_Faculty_Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0015_FLEID]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0015_FLEID]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0015_FLEID]"
+                      name="DE0015_FLEID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0030_Last_Name]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0030_Last_Name]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0030_Last_Name]"
+                      name="DE0030_Last_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0032_Middle_Name]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0032_Middle_Name]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0032_Middle_Name]"
+                      name="DE0032_Middle_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0280_Suffix]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0280_Suffix]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0280_Suffix]"
+                      name="DE0280_Suffix"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0010_OPEID]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0010_OPEID" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0020_PID]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0020_PID" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0031_First_Name]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0031_First_Name" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0035_Gender]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0035_Gender" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0050_Citizenship]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0050_Citizenship" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0060_Date_Hired]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0060_Date_Hired" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0070_Terms_Employed]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0070_Terms_Employed" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0080_Temp]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0080_Temp" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0090_Full_Time]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0090_Full_Time" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0100_Ann_Salary]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0100_Ann_Salary" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0110_Birth_date]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0110_Birth_date" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0120_Position_Title]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0120_Position_Title" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0130_OAC]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0130_OAC" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0150_Rank]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0150_Rank" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0160_Degree]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0160_Degree" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0170_Leave_Type]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0170_Leave_Type" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0180_Tenure_Status]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0180_Tenure_Status" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0190_Tenure_Date]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0190_Tenure_Date" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0235_Race_White]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0235_Race_White" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0240_Race_Black]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0240_Race_Black" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0245_Race_Asian]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0245_Race_Asian" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0250_Race_Native]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0250_Race_Native" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0255_Race_Hawaiian]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0255_Race_Hawaiian" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0260_Race_Hispanic]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0260_Race_Hispanic" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0265_Months_Employed]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0265_Months_Employed" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0270_Contract_Status]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0270_Contract_Status" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0275_Credit_Category]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0275_Credit_Category" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0225_EAM_Indicator]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0225_EAM_Indicator" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0095_Exempt]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0095_Exempt" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0185_Faculty_Status]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0185_Faculty_Status" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0015_FLEID]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0015_FLEID" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0030_Last_Name]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0030_Last_Name" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0032_Middle_Name]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0032_Middle_Name" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0280_Suffix]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0280_Suffix" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0010_OPEID]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0010_OPEID]"
+                      name="DE0010_OPEID" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0020_PID]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0020_PID]"
+                      name="DE0020_PID" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0031_First_Name]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0031_First_Name]"
+                      name="DE0031_First_Name" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0035_Gender]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0035_Gender]"
+                      name="DE0035_Gender" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0050_Citizenship]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0050_Citizenship]"
+                      name="DE0050_Citizenship" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0060_Date_Hired]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0060_Date_Hired]"
+                      name="DE0060_Date_Hired" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0070_Terms_Employed]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0070_Terms_Employed]"
+                      name="DE0070_Terms_Employed" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0080_Temp]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0080_Temp]"
+                      name="DE0080_Temp" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0090_Full_Time]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0090_Full_Time]"
+                      name="DE0090_Full_Time" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0100_Ann_Salary]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0100_Ann_Salary]"
+                      name="DE0100_Ann_Salary" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0110_Birth_date]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0110_Birth_date]"
+                      name="DE0110_Birth_date" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0120_Position_Title]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0120_Position_Title]"
+                      name="DE0120_Position_Title" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0130_OAC]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0130_OAC]"
+                      name="DE0130_OAC" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0150_Rank]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0150_Rank]"
+                      name="DE0150_Rank" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0160_Degree]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0160_Degree]"
+                      name="DE0160_Degree" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0170_Leave_Type]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0170_Leave_Type]"
+                      name="DE0170_Leave_Type" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0180_Tenure_Status]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0180_Tenure_Status]"
+                      name="DE0180_Tenure_Status" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0190_Tenure_Date]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0190_Tenure_Date]"
+                      name="DE0190_Tenure_Date" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0235_Race_White]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0235_Race_White]"
+                      name="DE0235_Race_White" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0240_Race_Black]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0240_Race_Black]"
+                      name="DE0240_Race_Black" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0245_Race_Asian]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0245_Race_Asian]"
+                      name="DE0245_Race_Asian" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0250_Race_Native]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0250_Race_Native]"
+                      name="DE0250_Race_Native" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0255_Race_Hawaiian]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0255_Race_Hawaiian]"
+                      name="DE0255_Race_Hawaiian" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0260_Race_Hispanic]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0260_Race_Hispanic]"
+                      name="DE0260_Race_Hispanic" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0265_Months_Employed]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0265_Months_Employed]"
+                      name="DE0265_Months_Employed" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0270_Contract_Status]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0270_Contract_Status]"
+                      name="DE0270_Contract_Status" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0275_Credit_Category]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0275_Credit_Category]"
+                      name="DE0275_Credit_Category" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0225_EAM_Indicator]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0225_EAM_Indicator]"
+                      name="DE0225_EAM_Indicator" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0095_Exempt]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0095_Exempt]"
+                      name="DE0095_Exempt" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0185_Faculty_Status]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0185_Faculty_Status]"
+                      name="DE0185_Faculty_Status" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0015_FLEID]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0015_FLEID]"
+                      name="DE0015_FLEID" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0030_Last_Name]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0030_Last_Name]"
+                      name="DE0030_Last_Name" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0032_Middle_Name]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0032_Middle_Name]"
+                      name="DE0032_Middle_Name" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0280_Suffix]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0280_Suffix]"
+                      name="DE0280_Suffix" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\MergeRT1IntoStateSubmission.Paths[Derived Column Output]"
+              endId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\MergeRT1IntoStateSubmission\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\MergeRT1IntoStateSubmission.Paths[OLE DB Source Output]"
+              endId="Package\MergeRT1IntoStateSubmission\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{EB0FBF34-3C27-4C83-998B-EB8ABABACFE9}"
+      DTS:From="Package\ClearGenericTable"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\MergeIntoGenericTable" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{C5D30200-56DB-4126-B50C-EDC5C415C911}"
+      DTS:From="Package\MergeIntoGenericTable"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\CreateHistoryTable" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{B60AC167-F1F9-4C34-8E6B-8F3F83E6488C}"
+      DTS:From="Package\CreateHistoryTable"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\MergeRT1IntoStateSubmission" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -24,5 +1834,284 @@
 <Objects
   Version="sql12">
   <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\ClearGenericTable"
+          TopLeft="164,48" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\MergeIntoGenericTable"
+          TopLeft="167,132" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="246,90">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="15.5,42"
+              Start="0,0"
+              End="15.5,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17"
+                    Point2="0,21"
+                    Point3="4,21" />
+                  <mssgle:LineSegment
+                    End="11.5,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.5,21"
+                    Point2="15.5,21"
+                    Point3="15.5,25" />
+                  <mssgle:LineSegment
+                    End="15.5,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="168,42"
+          Id="Package\CreateHistoryTable"
+          TopLeft="146,221" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="261.5,174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-31.5,47"
+              Start="0,0"
+              End="-31.5,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.5"
+                    Point2="0,23.5"
+                    Point3="-4,23.5" />
+                  <mssgle:LineSegment
+                    End="-27.5,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-27.5,23.5"
+                    Point2="-31.5,23.5"
+                    Point3="-31.5,27.5" />
+                  <mssgle:LineSegment
+                    End="-31.5,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="223,42"
+          Id="Package\MergeRT1IntoStateSubmission"
+          TopLeft="128,306" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="230,263">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.5,43"
+              Start="0,0"
+              End="9.5,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.5"
+                    Point2="0,21.5"
+                    Point3="4,21.5" />
+                  <mssgle:LineSegment
+                    End="5.5,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.5,21.5"
+                    Point2="9.5,21.5"
+                    Point3="9.5,25.5" />
+                  <mssgle:LineSegment
+                    End="9.5,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\MergeIntoGenericTable">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\MergeIntoGenericTable\Flat File Source"
+          TopLeft="171,56" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\MergeIntoGenericTable\OLE DB Destination"
+          TopLeft="139,165" />
+        <EdgeLayout
+          Id="Package\MergeIntoGenericTable.Paths[Flat File Source Output]"
+          TopLeft="246.5,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-22,67"
+              Start="0,0"
+              End="-22,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.5"
+                    Point2="0,33.5"
+                    Point3="-4,33.5" />
+                  <mssgle:LineSegment
+                    End="-18,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18,33.5"
+                    Point2="-22,33.5"
+                    Point3="-22,37.5" />
+                  <mssgle:LineSegment
+                    End="-22,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MergeIntoGenericTable\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\MergeRT1IntoStateSubmission">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\MergeRT1IntoStateSubmission\OLE DB Source"
+          TopLeft="139,85" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\MergeRT1IntoStateSubmission\OLE DB Destination"
+          TopLeft="133,298" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\MergeRT1IntoStateSubmission\Derived Column"
+          TopLeft="134,190" />
+        <EdgeLayout
+          Id="Package\MergeRT1IntoStateSubmission.Paths[OLE DB Source Output]"
+          TopLeft="212.5,127">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63"
+              Start="0,0"
+              End="0,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\MergeRT1IntoStateSubmission.Paths[Derived Column Output]"
+          TopLeft="214.75,232">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66"
+              Start="0,0"
+              End="0,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MergeRT1IntoStateSubmission\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MergeRT1IntoStateSubmission\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
