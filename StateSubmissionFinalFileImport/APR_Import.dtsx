@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="APR_Import"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{CE73DBE6-4281-4F13-B8EA-EE4080F00FAE}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{8053AC3F-46BD-4017-871A-D2BCFE38AFCE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -30,7 +30,8 @@
           DTS:HeaderRowDelimiter="_x000D__x000A_"
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252">
+          DTS:CodePage="1252"
+          DTS:ConnectionString="Z:\Stuart\ConsoleApplications\ExtractBuild\ExtractBuild\staff.pd2017">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -73,8 +74,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileLocation">
       <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"></DTS:VariableValue>
+        DTS:DataType="8">Z:\Stuart\ConsoleApplications\ExtractBuild\ExtractBuild\staff.pd2017</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -83,7 +83,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SubmissionDate">
       <DTS:VariableValue
-        DTS:DataType="8">10/26/2016</DTS:VariableValue>
+        DTS:DataType="8">10/25/2016</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -740,6 +740,13 @@
                       externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0185_Faculty_Status]"
                       lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0185_Faculty_Status]" />
                     <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0015_Term]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE0015_Term"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0015_Term]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0015_Term]" />
+                    <inputColumn
                       refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0015_FLEID]"
                       cachedCodepage="1252"
                       cachedDataType="text"
@@ -928,6 +935,11 @@
                       codePage="1252"
                       dataType="text"
                       name="DE0185_Faculty_Status" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0015_Term]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0015_Term" />
                     <externalMetadataColumn
                       refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0015_FLEID]"
                       codePage="1252"
@@ -1344,6 +1356,16 @@
                       name="DE0185_Faculty_Status"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0015_Term]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0015_Term]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0015_Term]"
+                      name="DE0015_Term"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
                       refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0015_FLEID]"
                       codePage="1252"
                       dataType="text"
@@ -1536,6 +1558,11 @@
                       codePage="1252"
                       dataType="text"
                       name="DE0185_Faculty_Status" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0015_Term]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE0015_Term" />
                     <externalMetadataColumn
                       refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0015_FLEID]"
                       codePage="1252"
@@ -1744,6 +1771,12 @@
                       lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0185_Faculty_Status]"
                       name="DE0185_Faculty_Status" />
                     <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0015_Term]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0015_Term]"
+                      name="DE0015_Term" />
+                    <outputColumn
                       refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0015_FLEID]"
                       codePage="1252"
                       dataType="text"
@@ -1844,9 +1877,17 @@
           Id="Package\ClearGenericTable"
           TopLeft="164,48" />
         <NodeLayout
+          Size="168,42"
+          Id="Package\CreateHistoryTable"
+          TopLeft="146,221" />
+        <NodeLayout
           Size="189,42"
           Id="Package\MergeIntoGenericTable"
           TopLeft="167,132" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\MergeRT1IntoStateSubmission"
+          TopLeft="128,306" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="246,90">
@@ -1881,10 +1922,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="168,42"
-          Id="Package\CreateHistoryTable"
-          TopLeft="146,221" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="261.5,174">
@@ -1919,10 +1956,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="223,42"
-          Id="Package\MergeRT1IntoStateSubmission"
-          TopLeft="128,306" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="230,263">
@@ -1964,7 +1997,7 @@
     design-time-name="Package\MergeIntoGenericTable">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="151,42"
           Id="Package\MergeIntoGenericTable\Flat File Source"
@@ -2004,7 +2037,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2029,31 +2064,39 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150,42"
-          Id="Package\MergeRT1IntoStateSubmission\OLE DB Source"
-          TopLeft="139,85" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\MergeRT1IntoStateSubmission\OLE DB Destination"
-          TopLeft="133,298" />
-        <NodeLayout
           Size="154,42"
           Id="Package\MergeRT1IntoStateSubmission\Derived Column"
           TopLeft="134,190" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\MergeRT1IntoStateSubmission\OLE DB Source"
+          TopLeft="125,91" />
         <EdgeLayout
           Id="Package\MergeRT1IntoStateSubmission.Paths[OLE DB Source Output]"
-          TopLeft="212.5,127">
+          TopLeft="200,133">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,63"
+              EndConnector="11,57"
               Start="0,0"
-              End="0,55.5">
+              End="11,49.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,55.5" />
+                    End="0,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5"
+                    Point2="0,28.5"
+                    Point3="4,28.5" />
+                  <mssgle:LineSegment
+                    End="7,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7,28.5"
+                    Point2="11,28.5"
+                    Point3="11,32.5" />
+                  <mssgle:LineSegment
+                    End="11,49.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2062,20 +2105,24 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\MergeRT1IntoStateSubmission\OLE DB Destination"
+          TopLeft="132,271" />
         <EdgeLayout
           Id="Package\MergeRT1IntoStateSubmission.Paths[Derived Column Output]"
-          TopLeft="214.75,232">
+          TopLeft="214.25,232">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,66"
+              EndConnector="0,39"
               Start="0,0"
-              End="0,58.5">
+              End="0,31.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,58.5" />
+                    End="0,31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
