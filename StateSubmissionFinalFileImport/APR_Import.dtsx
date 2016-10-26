@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="APR_Import"
   DTS:PackageType="5"
-  DTS:VersionBuild="27"
-  DTS:VersionGUID="{8053AC3F-46BD-4017-871A-D2BCFE38AFCE}">
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{A0DF24DA-125A-4861-B5EF-53B1DF1A2F0D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -747,13 +747,6 @@
                       externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0015_Term]"
                       lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0015_Term]" />
                     <inputColumn
-                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0015_FLEID]"
-                      cachedCodepage="1252"
-                      cachedDataType="text"
-                      cachedName="DE0015_FLEID"
-                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0015_FLEID]"
-                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0015_FLEID]" />
-                    <inputColumn
                       refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DE0030_Last_Name]"
                       cachedCodepage="1252"
                       cachedDataType="text"
@@ -782,6 +775,13 @@
                       cachedName="SubmissionDate"
                       externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubmissionDate]"
                       lineageId="Package\MergeRT1IntoStateSubmission\Derived Column.Outputs[Derived Column Output].Columns[SubmissionDate]" />
+                    <inputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FLEID]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="FLEID"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FLEID]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[FLEID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -941,11 +941,6 @@
                       dataType="text"
                       name="DE0015_Term" />
                     <externalMetadataColumn
-                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0015_FLEID]"
-                      codePage="1252"
-                      dataType="text"
-                      name="DE0015_FLEID" />
-                    <externalMetadataColumn
                       refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DE0030_Last_Name]"
                       codePage="1252"
                       dataType="text"
@@ -966,6 +961,11 @@
                       dataType="str"
                       length="10"
                       name="SubmissionDate" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FLEID]"
+                      codePage="1252"
+                      dataType="text"
+                      name="FLEID" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1366,16 +1366,6 @@
                       name="DE0015_Term"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0015_FLEID]"
-                      codePage="1252"
-                      dataType="text"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0015_FLEID]"
-                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0015_FLEID]"
-                      name="DE0015_FLEID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0030_Last_Name]"
                       codePage="1252"
                       dataType="text"
@@ -1404,6 +1394,16 @@
                       externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0280_Suffix]"
                       lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[DE0280_Suffix]"
                       name="DE0280_Suffix"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[FLEID]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FLEID]"
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].Columns[FLEID]"
+                      name="FLEID"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -1564,11 +1564,6 @@
                       dataType="text"
                       name="DE0015_Term" />
                     <externalMetadataColumn
-                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0015_FLEID]"
-                      codePage="1252"
-                      dataType="text"
-                      name="DE0015_FLEID" />
-                    <externalMetadataColumn
                       refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DE0030_Last_Name]"
                       codePage="1252"
                       dataType="text"
@@ -1583,6 +1578,11 @@
                       codePage="1252"
                       dataType="text"
                       name="DE0280_Suffix" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FLEID]"
+                      codePage="1252"
+                      dataType="text"
+                      name="FLEID" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1777,11 +1777,11 @@
                       lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0015_Term]"
                       name="DE0015_Term" />
                     <outputColumn
-                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0015_FLEID]"
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FLEID]"
                       codePage="1252"
                       dataType="text"
-                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0015_FLEID]"
-                      name="DE0015_FLEID" />
+                      lineageId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FLEID]"
+                      name="FLEID" />
                     <outputColumn
                       refId="Package\MergeRT1IntoStateSubmission\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DE0030_Last_Name]"
                       codePage="1252"
@@ -2064,13 +2064,17 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="154,42"
-          Id="Package\MergeRT1IntoStateSubmission\Derived Column"
-          TopLeft="134,190" />
-        <NodeLayout
           Size="150,42"
           Id="Package\MergeRT1IntoStateSubmission\OLE DB Source"
           TopLeft="125,91" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\MergeRT1IntoStateSubmission\OLE DB Destination"
+          TopLeft="132,271" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\MergeRT1IntoStateSubmission\Derived Column"
+          TopLeft="134,190" />
         <EdgeLayout
           Id="Package\MergeRT1IntoStateSubmission.Paths[OLE DB Source Output]"
           TopLeft="200,133">
@@ -2105,10 +2109,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\MergeRT1IntoStateSubmission\OLE DB Destination"
-          TopLeft="132,271" />
         <EdgeLayout
           Id="Package\MergeRT1IntoStateSubmission.Paths[Derived Column Output]"
           TopLeft="214.25,232">
