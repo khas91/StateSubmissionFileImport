@@ -1,0 +1,2570 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/15/2016 11:13:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="AEC-MNURUZZA-01"
+  DTS:CreatorName="FSCJ\spierson"
+  DTS:DTSID="{0E65290B-AD14-46DC-8ACB-5DF0DCE8CA05}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="FDB_Import"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{36D76261-91BC-475B-94AC-646320B977E1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FDB Extract]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{7871530C-8995-4196-BAEE-E83913C0E9BD}"
+      DTS:ObjectName="FDB Extract">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::FileLocation]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="RaggedRight"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D_"
+          DTS:RowDelimiter="_x000D__x000A_"
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="Z:\Stuart\SSIS Packages\StateSubmissionFinalFileImport\StateSubmissionFinalFileImport\facility.t1E2017">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:ObjectName="Column 0"
+              DTS:DTSID="{9366E51C-67CE-4BDD-AC99-0812720F240E}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[vulcan.StateSubmission]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{76AAAFD7-07CE-4159-8A5F-BC819C814A9F}"
+      DTS:ObjectName="vulcan.StateSubmission">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=vulcan;Initial Catalog=StateSubmission;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A9FC0BA5-D06A-49BD-8217-52A185F537A0}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileLocation">
+      <DTS:VariableValue
+        DTS:DataType="8">Z:\Stuart\SSIS Packages\StateSubmissionFinalFileImport\StateSubmissionFinalFileImport\facility.t1E2017</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E3C3C9B6-B4F5-4682-AFE1-6078AF026602}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileNameFacilities">
+      <DTS:VariableValue
+        DTS:DataType="8">facility.t1E2017</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C424AAC0-7698-4E17-B4A4-9D66ED674EA4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SubmissionDate">
+      <DTS:VariableValue
+        DTS:DataType="8">11/15/2016</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AABEB63E-02E7-443F-B915-A6263B4BDC32}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SubmissionType">
+      <DTS:VariableValue
+        DTS:DataType="8">E</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Clear Generic Submission Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7E46068D-FDC2-4A2C-AF1F-1E3426C9B437}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Clear Generic Submission Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{76AAAFD7-07CE-4159-8A5F-BC819C814A9F}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [Import].[GenericFaciltiesSubmission]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create History table for data"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1e5ac5cf-6464-45a3-9906-a80cb0897f3d}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create History table for data"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{76AAAFD7-07CE-4159-8A5F-BC819C814A9F}"
+          SQLTask:SqlStatementSource="declare @str varchar(50)&#xA;set @str = replace(?,'.','_')&#xA;&#xA;exec ('&#xA;select * into [History].[' + @str + ']&#xA;from Import.GenericFaciltiesSubmission&#xA;')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@studentTableName"
+            SQLTask:DtsVariableName="User::FileNameFacilities"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import Flat File Into Generic Submission Table"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{178A49AD-041B-4333-A439-D351325ADB51}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import Flat File Into Generic Submission Table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import Flat File Into Generic Submission Table\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Flat File Into Generic Submission Table\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[FDB Extract]"
+                  connectionManagerRefId="Package.ConnectionManagers[FDB Extract]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import Flat File Into Generic Submission Table\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Flat File Into Generic Submission Table\Flat File Source.Outputs[Flat File Source Output].Columns[Column 0]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Flat File Into Generic Submission Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 0]"
+                      length="255"
+                      lineageId="Package\Import Flat File Into Generic Submission Table\Flat File Source.Outputs[Flat File Source Output].Columns[Column 0]"
+                      name="Column 0"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Flat File Into Generic Submission Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Column 0" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import Flat File Into Generic Submission Table\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Flat File Into Generic Submission Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Import Flat File Into Generic Submission Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Import Flat File Into Generic Submission Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Flat File Into Generic Submission Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Flat File Into Generic Submission Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Flat File Into Generic Submission Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Flat File Into Generic Submission Table\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Import].[GenericFaciltiesSubmission]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Flat File Into Generic Submission Table\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  connectionManagerRefId="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Flat File Into Generic Submission Table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Flat File Into Generic Submission Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 0]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Column 0"
+                      externalMetadataColumnId="Package\Import Flat File Into Generic Submission Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Filler]"
+                      lineageId="Package\Import Flat File Into Generic Submission Table\Flat File Source.Outputs[Flat File Source Output].Columns[Column 0]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Flat File Into Generic Submission Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Filler]"
+                      codePage="1252"
+                      dataType="text"
+                      name="Filler" />
+                    <externalMetadataColumn
+                      refId="Package\Import Flat File Into Generic Submission Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EOF]"
+                      codePage="1252"
+                      dataType="text"
+                      name="EOF" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Flat File Into Generic Submission Table\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import Flat File Into Generic Submission Table\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Flat File Into Generic Submission Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Flat File Into Generic Submission Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Flat File Into Generic Submission Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Flat File Into Generic Submission Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import Flat File Into Generic Submission Table.Paths[Flat File Source Output]"
+              endId="Package\Import Flat File Into Generic Submission Table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Import Flat File Into Generic Submission Table\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import Table to StateSubmission"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5E82BA02-8DBE-4F07-8192-51F0E3ADBA25}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import Table to StateSubmission"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import Table to StateSubmission\RT1Table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="RT1Table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[FCODB].[RecordType1]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Table to StateSubmission\RT1Table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  connectionManagerRefId="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].Columns[DE5001_COLL_NUM]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5001_COLL_NUM"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5001_COLL_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5001_COLL_NUM]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].Columns[RType1]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="RType1"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[RType1]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[RType1]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].Columns[DE5100_SITE_NUM]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5100_SITE_NUM"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5100_SITE_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5100_SITE_NUM]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].Columns[DE5110_SITE_NM]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5110_SITE_NM"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5110_SITE_NM]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5110_SITE_NM]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].Columns[DE5120_SITE_TYP]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5120_SITE_TYP"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5120_SITE_TYP]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5120_SITE_TYP]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].Columns[DE5130_SITE_AREA]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5130_SITE_AREA"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5130_SITE_AREA]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5130_SITE_AREA]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].Columns[DE5140_SITE_OWN]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5140_SITE_OWN"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5140_SITE_OWN]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5140_SITE_OWN]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].Columns[DE5150_SITE_LEN_HOLD]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5150_SITE_LEN_HOLD"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5150_SITE_LEN_HOLD]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5150_SITE_LEN_HOLD]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].Columns[DE5160_SITE_MEANS]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5160_SITE_MEANS"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5160_SITE_MEANS]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5160_SITE_MEANS]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].Columns[DE5170_SITE_ACQ_DATE]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5170_SITE_ACQ_DATE"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5170_SITE_ACQ_DATE]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5170_SITE_ACQ_DATE]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].Columns[DE5002_STRM]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5002_STRM"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5002_STRM]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5002_STRM]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].Columns[DE5105_SITE_CNTY]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5105_SITE_CNTY"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5105_SITE_CNTY]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5105_SITE_CNTY]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5001_COLL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5001_COLL_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[RType1]"
+                      codePage="1252"
+                      dataType="text"
+                      name="RType1" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5100_SITE_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5100_SITE_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5110_SITE_NM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5110_SITE_NM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5120_SITE_TYP]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5120_SITE_TYP" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5130_SITE_AREA]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5130_SITE_AREA" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5140_SITE_OWN]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5140_SITE_OWN" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5150_SITE_LEN_HOLD]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5150_SITE_LEN_HOLD" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5160_SITE_MEANS]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5160_SITE_MEANS" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5170_SITE_ACQ_DATE]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5170_SITE_ACQ_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5002_STRM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5002_STRM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5105_SITE_CNTY]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5105_SITE_CNTY" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Table to StateSubmission\RT1Table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Table to StateSubmission\RT1Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Table to StateSubmission\RT1Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Table to StateSubmission\RT1View"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="RT1View"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[vwFDB_RType1]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Table to StateSubmission\RT1View.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  connectionManagerRefId="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5001_COLL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5001_COLL_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5001_COLL_NUM]"
+                      name="DE5001_COLL_NUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[RType1]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[RType1]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[RType1]"
+                      name="RType1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5100_SITE_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5100_SITE_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5100_SITE_NUM]"
+                      name="DE5100_SITE_NUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5110_SITE_NM]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5110_SITE_NM]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5110_SITE_NM]"
+                      name="DE5110_SITE_NM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5120_SITE_TYP]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5120_SITE_TYP]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5120_SITE_TYP]"
+                      name="DE5120_SITE_TYP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5130_SITE_AREA]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5130_SITE_AREA]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5130_SITE_AREA]"
+                      name="DE5130_SITE_AREA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5140_SITE_OWN]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5140_SITE_OWN]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5140_SITE_OWN]"
+                      name="DE5140_SITE_OWN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5150_SITE_LEN_HOLD]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5150_SITE_LEN_HOLD]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5150_SITE_LEN_HOLD]"
+                      name="DE5150_SITE_LEN_HOLD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5160_SITE_MEANS]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5160_SITE_MEANS]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5160_SITE_MEANS]"
+                      name="DE5160_SITE_MEANS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5170_SITE_ACQ_DATE]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5170_SITE_ACQ_DATE]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5170_SITE_ACQ_DATE]"
+                      name="DE5170_SITE_ACQ_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5002_STRM]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5002_STRM]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5002_STRM]"
+                      name="DE5002_STRM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5105_SITE_CNTY]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5105_SITE_CNTY]"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].Columns[DE5105_SITE_CNTY]"
+                      name="DE5105_SITE_CNTY"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5001_COLL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5001_COLL_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[RType1]"
+                      codePage="1252"
+                      dataType="text"
+                      name="RType1" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5100_SITE_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5100_SITE_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5110_SITE_NM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5110_SITE_NM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5120_SITE_TYP]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5120_SITE_TYP" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5130_SITE_AREA]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5130_SITE_AREA" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5140_SITE_OWN]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5140_SITE_OWN" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5150_SITE_LEN_HOLD]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5150_SITE_LEN_HOLD" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5160_SITE_MEANS]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5160_SITE_MEANS" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5170_SITE_ACQ_DATE]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5170_SITE_ACQ_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5002_STRM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5002_STRM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output].ExternalColumns[DE5105_SITE_CNTY]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5105_SITE_CNTY" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5001_COLL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5001_COLL_NUM]"
+                      name="DE5001_COLL_NUM" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[RType1]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[RType1]"
+                      name="RType1" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5100_SITE_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5100_SITE_NUM]"
+                      name="DE5100_SITE_NUM" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5110_SITE_NM]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5110_SITE_NM]"
+                      name="DE5110_SITE_NM" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5120_SITE_TYP]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5120_SITE_TYP]"
+                      name="DE5120_SITE_TYP" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5130_SITE_AREA]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5130_SITE_AREA]"
+                      name="DE5130_SITE_AREA" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5140_SITE_OWN]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5140_SITE_OWN]"
+                      name="DE5140_SITE_OWN" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5150_SITE_LEN_HOLD]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5150_SITE_LEN_HOLD]"
+                      name="DE5150_SITE_LEN_HOLD" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5160_SITE_MEANS]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5160_SITE_MEANS]"
+                      name="DE5160_SITE_MEANS" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5170_SITE_ACQ_DATE]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5170_SITE_ACQ_DATE]"
+                      name="DE5170_SITE_ACQ_DATE" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5002_STRM]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5002_STRM]"
+                      name="DE5002_STRM" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5105_SITE_CNTY]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[DE5105_SITE_CNTY]"
+                      name="DE5105_SITE_CNTY" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Table to StateSubmission\RT2Table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="RT2Table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[FCODB].[RecordType2]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Table to StateSubmission\RT2Table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  connectionManagerRefId="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].Columns[DE5001_COLL_NUM]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5001_COLL_NUM"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5001_COLL_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5001_COLL_NUM]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].Columns[RType3]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="RType3"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[RType3]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[RType3]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].Columns[DE5100_SITE_NUM]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5100_SITE_NUM"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5100_SITE_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5100_SITE_NUM]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].Columns[DE5200_FCL_NUM]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5200_FCL_NUM"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5200_FCL_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5200_FCL_NUM]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].Columns[DE5300_ROOM_NUM]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5300_ROOM_NUM"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5300_ROOM_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5300_ROOM_NUM]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].Columns[DE5310_ROOM_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5310_ROOM_NAME"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5310_ROOM_NAME]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5310_ROOM_NAME]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].Columns[DE5320_ROOM_USE_CD]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5320_ROOM_USE_CD"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5320_ROOM_USE_CD]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5320_ROOM_USE_CD]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].Columns[DE5330_ROOM_AREA]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5330_ROOM_AREA"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5330_ROOM_AREA]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5330_ROOM_AREA]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].Columns[DE5340_ROOM_ICS]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5340_ROOM_ICS"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5340_ROOM_ICS]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5340_ROOM_ICS]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].Columns[DE5350_ROOM_JNT_USE_CD]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5350_ROOM_JNT_USE_CD"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5350_ROOM_JNT_USE_CD]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5350_ROOM_JNT_USE_CD]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].Columns[DE5360_ROOM_CND]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5360_ROOM_CND"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5360_ROOM_CND]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5360_ROOM_CND]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].Columns[DE5002_STRM]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5002_STRM"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5002_STRM]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5002_STRM]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5001_COLL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5001_COLL_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[RType3]"
+                      codePage="1252"
+                      dataType="text"
+                      name="RType3" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5100_SITE_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5100_SITE_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5200_FCL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5200_FCL_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5300_ROOM_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5300_ROOM_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5310_ROOM_NAME]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5310_ROOM_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5320_ROOM_USE_CD]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5320_ROOM_USE_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5330_ROOM_AREA]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5330_ROOM_AREA" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5340_ROOM_ICS]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5340_ROOM_ICS" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5350_ROOM_JNT_USE_CD]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5350_ROOM_JNT_USE_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5360_ROOM_CND]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5360_ROOM_CND" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5002_STRM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5002_STRM" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Table to StateSubmission\RT2Table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Table to StateSubmission\RT2Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Table to StateSubmission\RT2Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Table to StateSubmission\RT2View"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="RT2View"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[vwFDB_RType3]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Table to StateSubmission\RT2View.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  connectionManagerRefId="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5001_COLL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5001_COLL_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5001_COLL_NUM]"
+                      name="DE5001_COLL_NUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[RType3]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[RType3]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[RType3]"
+                      name="RType3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5100_SITE_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5100_SITE_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5100_SITE_NUM]"
+                      name="DE5100_SITE_NUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5200_FCL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5200_FCL_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5200_FCL_NUM]"
+                      name="DE5200_FCL_NUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5300_ROOM_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5300_ROOM_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5300_ROOM_NUM]"
+                      name="DE5300_ROOM_NUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5310_ROOM_NAME]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5310_ROOM_NAME]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5310_ROOM_NAME]"
+                      name="DE5310_ROOM_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5320_ROOM_USE_CD]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5320_ROOM_USE_CD]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5320_ROOM_USE_CD]"
+                      name="DE5320_ROOM_USE_CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5330_ROOM_AREA]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5330_ROOM_AREA]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5330_ROOM_AREA]"
+                      name="DE5330_ROOM_AREA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5340_ROOM_ICS]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5340_ROOM_ICS]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5340_ROOM_ICS]"
+                      name="DE5340_ROOM_ICS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5350_ROOM_JNT_USE_CD]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5350_ROOM_JNT_USE_CD]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5350_ROOM_JNT_USE_CD]"
+                      name="DE5350_ROOM_JNT_USE_CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5360_ROOM_CND]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5360_ROOM_CND]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5360_ROOM_CND]"
+                      name="DE5360_ROOM_CND"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5002_STRM]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5002_STRM]"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].Columns[DE5002_STRM]"
+                      name="DE5002_STRM"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5001_COLL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5001_COLL_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[RType3]"
+                      codePage="1252"
+                      dataType="text"
+                      name="RType3" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5100_SITE_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5100_SITE_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5200_FCL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5200_FCL_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5300_ROOM_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5300_ROOM_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5310_ROOM_NAME]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5310_ROOM_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5320_ROOM_USE_CD]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5320_ROOM_USE_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5330_ROOM_AREA]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5330_ROOM_AREA" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5340_ROOM_ICS]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5340_ROOM_ICS" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5350_ROOM_JNT_USE_CD]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5350_ROOM_JNT_USE_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5360_ROOM_CND]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5360_ROOM_CND" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output].ExternalColumns[DE5002_STRM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5002_STRM" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5001_COLL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5001_COLL_NUM]"
+                      name="DE5001_COLL_NUM" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[RType3]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[RType3]"
+                      name="RType3" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5100_SITE_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5100_SITE_NUM]"
+                      name="DE5100_SITE_NUM" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5200_FCL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5200_FCL_NUM]"
+                      name="DE5200_FCL_NUM" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5300_ROOM_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5300_ROOM_NUM]"
+                      name="DE5300_ROOM_NUM" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5310_ROOM_NAME]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5310_ROOM_NAME]"
+                      name="DE5310_ROOM_NAME" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5320_ROOM_USE_CD]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5320_ROOM_USE_CD]"
+                      name="DE5320_ROOM_USE_CD" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5330_ROOM_AREA]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5330_ROOM_AREA]"
+                      name="DE5330_ROOM_AREA" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5340_ROOM_ICS]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5340_ROOM_ICS]"
+                      name="DE5340_ROOM_ICS" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5350_ROOM_JNT_USE_CD]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5350_ROOM_JNT_USE_CD]"
+                      name="DE5350_ROOM_JNT_USE_CD" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5360_ROOM_CND]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5360_ROOM_CND]"
+                      name="DE5360_ROOM_CND" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5002_STRM]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[DE5002_STRM]"
+                      name="DE5002_STRM" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Table to StateSubmission\RT3Table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="RT3Table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[FCODB].[RecordType3]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Table to StateSubmission\RT3Table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  connectionManagerRefId="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].Columns[DE5001_COLL_NUM]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5001_COLL_NUM"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5001_COLL_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5001_COLL_NUM]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].Columns[RType3]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="RType3"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[RType3]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[RType3]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].Columns[DE5100_SITE_NUM]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5100_SITE_NUM"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5100_SITE_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5100_SITE_NUM]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].Columns[DE5200_FCL_NUM]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5200_FCL_NUM"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5200_FCL_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5200_FCL_NUM]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].Columns[DE5300_ROOM_NUM]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5300_ROOM_NUM"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5300_ROOM_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5300_ROOM_NUM]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].Columns[DE5310_ROOM_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5310_ROOM_NAME"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5310_ROOM_NAME]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5310_ROOM_NAME]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].Columns[DE5320_ROOM_USE_CD]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5320_ROOM_USE_CD"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5320_ROOM_USE_CD]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5320_ROOM_USE_CD]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].Columns[DE5330_ROOM_AREA]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5330_ROOM_AREA"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5330_ROOM_AREA]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5330_ROOM_AREA]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].Columns[DE5340_ROOM_ICS]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5340_ROOM_ICS"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5340_ROOM_ICS]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5340_ROOM_ICS]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].Columns[DE5350_ROOM_JNT_USE_CD]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5350_ROOM_JNT_USE_CD"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5350_ROOM_JNT_USE_CD]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5350_ROOM_JNT_USE_CD]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].Columns[DE5360_ROOM_CND]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5360_ROOM_CND"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5360_ROOM_CND]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5360_ROOM_CND]" />
+                    <inputColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].Columns[DE5002_STRM]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DE5002_STRM"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5002_STRM]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5002_STRM]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5001_COLL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5001_COLL_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[RType3]"
+                      codePage="1252"
+                      dataType="text"
+                      name="RType3" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5100_SITE_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5100_SITE_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5200_FCL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5200_FCL_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5300_ROOM_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5300_ROOM_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5310_ROOM_NAME]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5310_ROOM_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5320_ROOM_USE_CD]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5320_ROOM_USE_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5330_ROOM_AREA]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5330_ROOM_AREA" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5340_ROOM_ICS]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5340_ROOM_ICS" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5350_ROOM_JNT_USE_CD]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5350_ROOM_JNT_USE_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5360_ROOM_CND]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5360_ROOM_CND" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input].ExternalColumns[DE5002_STRM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5002_STRM" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Table to StateSubmission\RT3Table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Table to StateSubmission\RT3Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Table to StateSubmission\RT3Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Table to StateSubmission\RT3View"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="RT3View"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[vwFDB_RType3]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Table to StateSubmission\RT3View.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  connectionManagerRefId="Package.ConnectionManagers[vulcan.StateSubmission]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5001_COLL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5001_COLL_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5001_COLL_NUM]"
+                      name="DE5001_COLL_NUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[RType3]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[RType3]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[RType3]"
+                      name="RType3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5100_SITE_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5100_SITE_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5100_SITE_NUM]"
+                      name="DE5100_SITE_NUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5200_FCL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5200_FCL_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5200_FCL_NUM]"
+                      name="DE5200_FCL_NUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5300_ROOM_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5300_ROOM_NUM]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5300_ROOM_NUM]"
+                      name="DE5300_ROOM_NUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5310_ROOM_NAME]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5310_ROOM_NAME]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5310_ROOM_NAME]"
+                      name="DE5310_ROOM_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5320_ROOM_USE_CD]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5320_ROOM_USE_CD]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5320_ROOM_USE_CD]"
+                      name="DE5320_ROOM_USE_CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5330_ROOM_AREA]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5330_ROOM_AREA]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5330_ROOM_AREA]"
+                      name="DE5330_ROOM_AREA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5340_ROOM_ICS]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5340_ROOM_ICS]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5340_ROOM_ICS]"
+                      name="DE5340_ROOM_ICS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5350_ROOM_JNT_USE_CD]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5350_ROOM_JNT_USE_CD]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5350_ROOM_JNT_USE_CD]"
+                      name="DE5350_ROOM_JNT_USE_CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5360_ROOM_CND]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5360_ROOM_CND]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5360_ROOM_CND]"
+                      name="DE5360_ROOM_CND"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5002_STRM]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5002_STRM]"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].Columns[DE5002_STRM]"
+                      name="DE5002_STRM"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5001_COLL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5001_COLL_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[RType3]"
+                      codePage="1252"
+                      dataType="text"
+                      name="RType3" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5100_SITE_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5100_SITE_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5200_FCL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5200_FCL_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5300_ROOM_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5300_ROOM_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5310_ROOM_NAME]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5310_ROOM_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5320_ROOM_USE_CD]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5320_ROOM_USE_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5330_ROOM_AREA]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5330_ROOM_AREA" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5340_ROOM_ICS]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5340_ROOM_ICS" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5350_ROOM_JNT_USE_CD]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5350_ROOM_JNT_USE_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5360_ROOM_CND]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5360_ROOM_CND" />
+                    <externalMetadataColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output].ExternalColumns[DE5002_STRM]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DE5002_STRM" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5001_COLL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5001_COLL_NUM]"
+                      name="DE5001_COLL_NUM" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[RType3]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[RType3]"
+                      name="RType3" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5100_SITE_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5100_SITE_NUM]"
+                      name="DE5100_SITE_NUM" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5200_FCL_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5200_FCL_NUM]"
+                      name="DE5200_FCL_NUM" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5300_ROOM_NUM]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5300_ROOM_NUM]"
+                      name="DE5300_ROOM_NUM" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5310_ROOM_NAME]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5310_ROOM_NAME]"
+                      name="DE5310_ROOM_NAME" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5320_ROOM_USE_CD]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5320_ROOM_USE_CD]"
+                      name="DE5320_ROOM_USE_CD" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5330_ROOM_AREA]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5330_ROOM_AREA]"
+                      name="DE5330_ROOM_AREA" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5340_ROOM_ICS]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5340_ROOM_ICS]"
+                      name="DE5340_ROOM_ICS" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5350_ROOM_JNT_USE_CD]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5350_ROOM_JNT_USE_CD]"
+                      name="DE5350_ROOM_JNT_USE_CD" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5360_ROOM_CND]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5360_ROOM_CND]"
+                      name="DE5360_ROOM_CND" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5002_STRM]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[DE5002_STRM]"
+                      name="DE5002_STRM" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import Table to StateSubmission.Paths[OLE DB Source Output]"
+              endId="Package\Import Table to StateSubmission\RT1Table.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Import Table to StateSubmission\RT1View.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Import Table to StateSubmission.Paths[OLE DB Source Output1]"
+              endId="Package\Import Table to StateSubmission\RT2Table.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Import Table to StateSubmission\RT2View.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Import Table to StateSubmission.Paths[OLE DB Source Output2]"
+              endId="Package\Import Table to StateSubmission\RT3Table.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Import Table to StateSubmission\RT3View.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{07CCAF57-3AB3-472F-98BC-07F9F1DB6672}"
+      DTS:From="Package\Clear Generic Submission Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Import Flat File Into Generic Submission Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{07C1B72E-A434-458F-8DAD-5F43327C6012}"
+      DTS:From="Package\Import Flat File Into Generic Submission Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Create History table for data" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{C4411749-6B76-4558-BBD0-1045681BE081}"
+      DTS:From="Package\Create History table for data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Import Table to StateSubmission" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="297.6,41.6"
+          Id="Package\Import Flat File Into Generic Submission Table"
+          TopLeft="166.285717117543,108.894119174258" />
+        <NodeLayout
+          Size="227.2,41.6"
+          Id="Package\Clear Generic Submission Table"
+          TopLeft="152.857145460285,22.1764708992519" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="266.457145460285,63.7764708992519">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="48.6285716572586,45.1176482750058"
+              Start="0,0"
+              End="48.6285716572586,37.6176482750058">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5588241375029" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5588241375029"
+                    Point2="0,22.5588241375029"
+                    Point3="4,22.5588241375029" />
+                  <mssgle:LineSegment
+                    End="44.6285716572586,22.5588241375029" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44.6285716572586,22.5588241375029"
+                    Point2="48.6285716572586,22.5588241375029"
+                    Point3="48.6285716572586,26.5588241375029" />
+                  <mssgle:LineSegment
+                    End="48.6285716572586,37.6176482750058" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="s"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="33.6,60"
+          Id="51608383-9a63-48ac-9a42-bec664820001"
+          TopLeft="383.571435103611,253.882356501781" />
+        <NodeLayout
+          Size="212.8,41.6"
+          Id="Package\Create History table for data"
+          TopLeft="178.571431612482,188.823530376989" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="315.085717117543,150.494119174258">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-30.1142855050613,38.3294112027311"
+              Start="0,0"
+              End="-30.1142855050613,30.8294112027311">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.1647056013655" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.1647056013655"
+                    Point2="0,19.1647056013655"
+                    Point3="-4,19.1647056013655" />
+                  <mssgle:LineSegment
+                    End="-26.1142855050613,19.1647056013655" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-26.1142855050613,19.1647056013655"
+                    Point2="-30.1142855050613,19.1647056013655"
+                    Point3="-30.1142855050613,23.1647056013655" />
+                  <mssgle:LineSegment
+                    End="-30.1142855050613,30.8294112027311" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="233.6,41.6"
+          Id="Package\Import Table to StateSubmission"
+          TopLeft="201.42857485888,276.82353329411" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="284.971431612482,230.423530376989">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33.2571432463978,46.4000029171214"
+              Start="0,0"
+              End="33.2571432463978,38.9000029171214">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.2000014585607" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.2000014585607"
+                    Point2="0,23.2000014585607"
+                    Point3="4,23.2000014585607" />
+                  <mssgle:LineSegment
+                    End="29.2571432463978,23.2000014585607" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.2571432463978,23.2000014585607"
+                    Point2="33.2571432463978,23.2000014585607"
+                    Point3="33.2571432463978,27.2000014585607" />
+                  <mssgle:LineSegment
+                    End="33.2571432463978,38.9000029171214" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Import Flat File Into Generic Submission Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Import Flat File Into Generic Submission Table\Flat File Source"
+          TopLeft="176.571431578422,105.223530887485" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Import Flat File Into Generic Submission Table\OLE DB Destination"
+          TopLeft="167.857145715733,179.705884873248" />
+        <EdgeLayout
+          Id="Package\Import Flat File Into Generic Submission Table.Paths[Flat File Source Output]"
+          TopLeft="252.614288647078,146.823530887485">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.8823539857634"
+              Start="0,0"
+              End="0,25.3823539857634">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.3823539857634" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Flat File Into Generic Submission Table\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Import Table to StateSubmission">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Import Table to StateSubmission\RT1View"
+          TopLeft="146.4,95.2" />
+        <NodeLayout
+          Size="123.2,41.6"
+          Id="Package\Import Table to StateSubmission\RT1Table"
+          TopLeft="144,168" />
+        <EdgeLayout
+          Id="Package\Import Table to StateSubmission.Paths[OLE DB Source Output]"
+          TopLeft="206,136.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.2"
+              Start="0,0"
+              End="0,23.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Import Table to StateSubmission\RT2View"
+          TopLeft="317.6,95.2" />
+        <NodeLayout
+          Size="123.2,41.6"
+          Id="Package\Import Table to StateSubmission\RT2Table"
+          TopLeft="314.4,169.6" />
+        <EdgeLayout
+          Id="Package\Import Table to StateSubmission.Paths[OLE DB Source Output1]"
+          TopLeft="376.8,136.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.8"
+              Start="0,0"
+              End="0,25.3">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.3" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Import Table to StateSubmission\RT3View"
+          TopLeft="468,101.6" />
+        <NodeLayout
+          Size="123.2,41.6"
+          Id="Package\Import Table to StateSubmission\RT3Table"
+          TopLeft="464,170.4" />
+        <EdgeLayout
+          Id="Package\Import Table to StateSubmission.Paths[OLE DB Source Output2]"
+          TopLeft="526.8,143.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.2"
+              Start="0,0"
+              End="0,19.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Table to StateSubmission\RT1View">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Table to StateSubmission\RT1Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Table to StateSubmission\RT2View">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Table to StateSubmission\RT2Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Table to StateSubmission\RT3View">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Table to StateSubmission\RT3Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

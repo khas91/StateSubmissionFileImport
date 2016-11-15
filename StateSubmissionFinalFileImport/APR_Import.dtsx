@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="APR_Import"
   DTS:PackageType="5"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{A0DF24DA-125A-4861-B5EF-53B1DF1A2F0D}">
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{999F1EC4-00EE-4C30-AF8A-2418C24B6F0A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -31,7 +31,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="Z:\Stuart\ConsoleApplications\ExtractBuild\ExtractBuild\staff.pd2017">
+          DTS:ConnectionString="Z:\State Submissions\APR\2017\20161028-3\staff.tpd2017">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -74,7 +74,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileLocation">
       <DTS:VariableValue
-        DTS:DataType="8">Z:\Stuart\ConsoleApplications\ExtractBuild\ExtractBuild\staff.pd2017</DTS:VariableValue>
+        DTS:DataType="8">Z:\State Submissions\APR\2017\20161028-3\staff.tpd2017</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -83,7 +83,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SubmissionDate">
       <DTS:VariableValue
-        DTS:DataType="8">10/25/2016</DTS:VariableValue>
+        DTS:DataType="8">10/28/2016</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -966,6 +966,12 @@
                       codePage="1252"
                       dataType="text"
                       name="FLEID" />
+                    <externalMetadataColumn
+                      refId="Package\MergeRT1IntoStateSubmission\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EMPLID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="EMPLID" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1873,19 +1879,19 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="164,42"
+          Size="164,41.6"
           Id="Package\ClearGenericTable"
           TopLeft="164,48" />
         <NodeLayout
-          Size="168,42"
+          Size="168,41.6"
           Id="Package\CreateHistoryTable"
           TopLeft="146,221" />
         <NodeLayout
-          Size="189,42"
+          Size="188.8,41.6"
           Id="Package\MergeIntoGenericTable"
           TopLeft="167,132" />
         <NodeLayout
-          Size="223,42"
+          Size="223.2,41.6"
           Id="Package\MergeRT1IntoStateSubmission"
           TopLeft="128,306" />
         <EdgeLayout
@@ -2064,15 +2070,15 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150,42"
+          Size="150.4,41.6"
           Id="Package\MergeRT1IntoStateSubmission\OLE DB Source"
           TopLeft="125,91" />
         <NodeLayout
-          Size="171,42"
+          Size="171.2,41.6"
           Id="Package\MergeRT1IntoStateSubmission\OLE DB Destination"
           TopLeft="132,271" />
         <NodeLayout
-          Size="154,42"
+          Size="153.6,41.6"
           Id="Package\MergeRT1IntoStateSubmission\Derived Column"
           TopLeft="134,190" />
         <EdgeLayout
