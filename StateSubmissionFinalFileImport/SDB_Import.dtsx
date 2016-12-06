@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SDB_Import"
   DTS:PackageType="5"
-  DTS:VersionBuild="93"
-  DTS:VersionGUID="{95F6BC03-C1A1-4F5D-A399-28B52C6725FA}">
+  DTS:VersionBuild="96"
+  DTS:VersionGUID="{C5ED9C1C-E5DD-4432-B108-B528872CC69E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -32,7 +32,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\spierson\Desktop\StateSubmissionFinalFileImport\StateSubmissionFinalFileImport\Submissions\student.t3E2016">
+          DTS:ConnectionString="Z:\State Submissions\SDB Submission\16-17\T1E2017\20160930 - FINAL\student.t1E2017">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -441,7 +441,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileLocation">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\spierson\Desktop\StateSubmissionFinalFileImport\StateSubmissionFinalFileImport\Submissions\</DTS:VariableValue>
+        DTS:DataType="8">Z:\State Submissions\SDB Submission\16-17\T1E2017\20160930 - FINAL\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -450,7 +450,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileNameStudent">
       <DTS:VariableValue
-        DTS:DataType="8">student.t3E2016</DTS:VariableValue>
+        DTS:DataType="8">student.t1E2017</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -459,7 +459,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SubmissionDate">
       <DTS:VariableValue
-        DTS:DataType="8">6/10/2016</DTS:VariableValue>
+        DTS:DataType="8">9/30/2016</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -1388,7 +1388,7 @@
     design-time-name="Package\Load Generic into StateSubmission Database">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="248,41.6"
           Id="Package\Load Generic into StateSubmission Database\GenericImportedStudentSubmission"
@@ -1416,7 +1416,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

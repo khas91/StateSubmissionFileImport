@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="FDB_Import"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{36D76261-91BC-475B-94AC-646320B977E1}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{CC323B44-3C98-446D-92E0-9881E664C592}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -31,7 +31,7 @@
           DTS:RowDelimiter="_x000D__x000A_"
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="Z:\Stuart\SSIS Packages\StateSubmissionFinalFileImport\StateSubmissionFinalFileImport\facility.t1E2017">
+          DTS:ConnectionString="Z:\State Submissions\FDB Submission\15-16\T2E2016\20160208 - Final\facility.t2E2016">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -64,7 +64,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileLocation">
       <DTS:VariableValue
-        DTS:DataType="8">Z:\Stuart\SSIS Packages\StateSubmissionFinalFileImport\StateSubmissionFinalFileImport\facility.t1E2017</DTS:VariableValue>
+        DTS:DataType="8">Z:\State Submissions\FDB Submission\15-16\T2E2016\20160208 - Final\facility.t2E2016</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -73,7 +73,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileNameFacilities">
       <DTS:VariableValue
-        DTS:DataType="8">facility.t1E2017</DTS:VariableValue>
+        DTS:DataType="8">facility.t2E2016</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -82,7 +82,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SubmissionDate">
       <DTS:VariableValue
-        DTS:DataType="8">11/15/2016</DTS:VariableValue>
+        DTS:DataType="8">2/8/2016</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -2212,13 +2212,21 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="297.6,41.6"
+          Size="227,42"
+          Id="Package\Clear Generic Submission Table"
+          TopLeft="152.857145460285,22.1764708992519" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\Create History table for data"
+          TopLeft="178.571431612482,188.823530376989" />
+        <NodeLayout
+          Size="298,42"
           Id="Package\Import Flat File Into Generic Submission Table"
           TopLeft="166.285717117543,108.894119174258" />
         <NodeLayout
-          Size="227.2,41.6"
-          Id="Package\Clear Generic Submission Table"
-          TopLeft="152.857145460285,22.1764708992519" />
+          Size="234,42"
+          Id="Package\Import Table to StateSubmission"
+          TopLeft="201.42857485888,276.82353329411" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="266.457145460285,63.7764708992519">
@@ -2253,17 +2261,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <AnnotationLayout
-          Text="s"
-          ParentId="Package"
-          FontInfo="{assembly:Null}"
-          Size="33.6,60"
-          Id="51608383-9a63-48ac-9a42-bec664820001"
-          TopLeft="383.571435103611,253.882356501781" />
-        <NodeLayout
-          Size="212.8,41.6"
-          Id="Package\Create History table for data"
-          TopLeft="178.571431612482,188.823530376989" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="315.085717117543,150.494119174258">
@@ -2298,10 +2295,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="233.6,41.6"
-          Id="Package\Import Table to StateSubmission"
-          TopLeft="201.42857485888,276.82353329411" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="284.971431612482,230.423530376989">
@@ -2336,6 +2329,13 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="s"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="34,40"
+          Id="51608383-9a63-48ac-9a42-bec664820001"
+          TopLeft="383.571435103611,253.882356501781" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2343,7 +2343,7 @@
     design-time-name="Package\Import Flat File Into Generic Submission Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150.4,41.6"
           Id="Package\Import Flat File Into Generic Submission Table\Flat File Source"
@@ -2371,7 +2371,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2396,43 +2398,29 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="120,41.6"
+          Size="123,42"
+          Id="Package\Import Table to StateSubmission\RT2Table"
+          TopLeft="314.4,169.6" />
+        <NodeLayout
+          Size="120,42"
           Id="Package\Import Table to StateSubmission\RT1View"
           TopLeft="146.4,95.2" />
         <NodeLayout
-          Size="123.2,41.6"
-          Id="Package\Import Table to StateSubmission\RT1Table"
-          TopLeft="144,168" />
-        <EdgeLayout
-          Id="Package\Import Table to StateSubmission.Paths[OLE DB Source Output]"
-          TopLeft="206,136.8">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,31.2"
-              Start="0,0"
-              End="0,23.7">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.7" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="120,42"
+          Id="Package\Import Table to StateSubmission\RT3View"
+          TopLeft="468,101.6" />
         <NodeLayout
-          Size="120,41.6"
+          Size="123,42"
+          Id="Package\Import Table to StateSubmission\RT3Table"
+          TopLeft="464,170.4" />
+        <NodeLayout
+          Size="120,42"
           Id="Package\Import Table to StateSubmission\RT2View"
           TopLeft="317.6,95.2" />
         <NodeLayout
-          Size="123.2,41.6"
-          Id="Package\Import Table to StateSubmission\RT2Table"
-          TopLeft="314.4,169.6" />
+          Size="123,42"
+          Id="Package\Import Table to StateSubmission\RT1Table"
+          TopLeft="144,168" />
         <EdgeLayout
           Id="Package\Import Table to StateSubmission.Paths[OLE DB Source Output1]"
           TopLeft="376.8,136.8">
@@ -2455,14 +2443,28 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="120,41.6"
-          Id="Package\Import Table to StateSubmission\RT3View"
-          TopLeft="468,101.6" />
-        <NodeLayout
-          Size="123.2,41.6"
-          Id="Package\Import Table to StateSubmission\RT3Table"
-          TopLeft="464,170.4" />
+        <EdgeLayout
+          Id="Package\Import Table to StateSubmission.Paths[OLE DB Source Output]"
+          TopLeft="206,136.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.2"
+              Start="0,0"
+              End="0,23.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Import Table to StateSubmission.Paths[OLE DB Source Output2]"
           TopLeft="526.8,143.2">
@@ -2489,6 +2491,19 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Import Table to StateSubmission\RT2Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Import Table to StateSubmission\RT1View">
     <Properties>
       <Property>
@@ -2502,7 +2517,20 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Import Table to StateSubmission\RT1Table">
+    design-time-name="Package\Import Table to StateSubmission\RT3View">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Table to StateSubmission\RT3Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2528,33 +2556,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Import Table to StateSubmission\RT2Table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import Table to StateSubmission\RT3View">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import Table to StateSubmission\RT3Table">
+    design-time-name="Package\Import Table to StateSubmission\RT1Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ADB_Import"
   DTS:PackageType="5"
-  DTS:VersionBuild="86"
-  DTS:VersionGUID="{2E7D9302-D0D1-4B77-B4D1-223B5ADEDA39}">
+  DTS:VersionBuild="90"
+  DTS:VersionGUID="{0449FB86-FE3E-42E9-A6A5-F14917B5C238}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -32,7 +32,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\spierson\Desktop\StateSubmissionFinalFileImport\StateSubmissionFinalFileImport\Submissions\person.t1e2017">
+          DTS:ConnectionString="Z:\State Submissions\ADB Submission\16-17\T1E2017\20160927 - FINAL\admiss.T1E2017">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -71,7 +71,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileLocation">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\spierson\Desktop\StateSubmissionFinalFileImport\StateSubmissionFinalFileImport\Submissions\</DTS:VariableValue>
+        DTS:DataType="8">Z:\State Submissions\ADB Submission\16-17\T1E2017\20160927 - FINAL\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -80,7 +80,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileNameAdmissions">
       <DTS:VariableValue
-        DTS:DataType="8">person.t1e2017</DTS:VariableValue>
+        DTS:DataType="8">admiss.T1E2017</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -89,7 +89,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SubmissionDate">
       <DTS:VariableValue
-        DTS:DataType="8">6/9/2011</DTS:VariableValue>
+        DTS:DataType="8">9/28/2016</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""

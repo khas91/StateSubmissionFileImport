@@ -1,0 +1,2088 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/6/2016 2:16:03 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="AEC-MNURUZZA-01"
+  DTS:CreatorName="FSCJ\spierson"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{E177863A-B9E2-4214-AE1B-89CD5DD1345E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="EF2IPFIL_Import"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{EA0C59DC-B819-46E5-A4CC-F7D04F2115E2}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B07FD491-2928-4D0C-A6AC-9234E5567DBB}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=vulcan;Initial Catalog=StateProvidedData;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{CD2DC729-CA3A-473F-A9D2-A3C073FACD2D}"
+      DTS:ObjectName="SourceConnectionFlatFile">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::EF2IPFIL_File]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="RaggedRight"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter="_x000D__x000A_"
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="Z:\State Submissions\SDB Submission\15-16\T2B2016\20151002 2nd\StateEdit\Storage\EF2IPFIL.T2B2016">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="4"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:ObjectName="Year"
+              DTS:DTSID="{B921EA6D-3859-4500-AD1C-C87A580847B4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="Term"
+              DTS:DTSID="{00D4D325-5CB7-45F0-8EB3-066C5A947A8D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="Term Submission"
+              DTS:DTSID="{8BCB8B57-A3E0-4D26-91EA-F4F1D27C8A6E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="2"
+              DTS:MaximumWidth="2"
+              DTS:DataType="129"
+              DTS:ObjectName="College Number"
+              DTS:DTSID="{AD30E33C-1E83-4F29-9345-D5D23F7D1192}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="10"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:ObjectName="Student Identification Number"
+              DTS:DTSID="{5A0C2AAE-E9DA-4A66-97CA-9F754279CFB1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="Gender"
+              DTS:DTSID="{9EFC1ADD-2856-4C5D-8C7C-9B7AAF4BC582}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="Ethnic_Origin"
+              DTS:DTSID="{15BA7B9D-64B2-4685-B5F5-048F8C2B8903}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="Citizen"
+              DTS:DTSID="{4EDB1025-6C37-497F-8E06-5CFD43CA46A6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="2"
+              DTS:MaximumWidth="2"
+              DTS:DataType="129"
+              DTS:ObjectName="FTIC"
+              DTS:DTSID="{8891D3CB-DCFD-4FEF-960D-82F81755BD68}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="PTIME"
+              DTS:DTSID="{D7DBC71D-B69C-4EBE-9E99-63137ECFDA8F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="EntClass"
+              DTS:DTSID="{CAE2CB53-7DC6-425A-9E07-943F0F005561}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="AWARD"
+              DTS:DTSID="{465284B5-47C9-4364-9A0D-FA76620FB589}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="DEGSEEK"
+              DTS:DTSID="{E3E1847E-F0D4-4C77-84FA-A197EDD1A538}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="TRANSFER"
+              DTS:DTSID="{A2E4CD42-24CC-4894-B6E3-AEB6DCD72792}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="LINE"
+              DTS:DTSID="{42E7ADD7-A9C8-4275-9E41-677204B03052}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="PYrHSgrads"
+              DTS:DTSID="{F42D7CDC-2EB5-4299-BED8-08BC416301BA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="RESIDE"
+              DTS:DTSID="{B9712D97-DCCE-4450-ABE9-C1723F7208F0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="R2State"
+              DTS:DTSID="{5E0EE848-8525-4E24-94DE-09B87C2568F4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="BIRDATE"
+              DTS:DTSID="{58611948-9D5A-4855-BA9A-FF803F7E57E1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:MaximumWidth="14"
+              DTS:DataType="129"
+              DTS:ObjectName="FLEID"
+              DTS:DTSID="{3047ECA7-03E0-4786-BF3F-B0B49B1E4370}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:ObjectName="Column 0"
+              DTS:DTSID="{4B7EFEF7-BE11-40BD-A11C-13D02289BC6E}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2747B59D-18DB-4B95-A548-E76ADC99CBAF}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="EF2IPFIL_File">
+      <DTS:VariableValue
+        DTS:DataType="8">Z:\State Submissions\SDB Submission\15-16\T2B2016\20151002 2nd\StateEdit\Storage\EF2IPFIL.T2B2016</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{35294093-CBB5-4FF7-B6DA-29FB656B356C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="EF2IPFIL_File_name">
+      <DTS:VariableValue
+        DTS:DataType="8">EF2IPFIL.T2B2016</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9EE6A84C-590B-4106-921C-89D628E9750A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="EF2IPFIL_Table">
+      <DTS:VariableValue
+        DTS:DataType="8">[IPEDS].[EF2IPFIL_T2B2016]</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{ECDFA83F-5EF6-4198-BD78-83EDA7BF6BD3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - EF2IPFILT2B2016_txt"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[IPEDS].[EF2IPFILT2B2016_txt]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable">User::EF2IPFIL_Table</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[Year]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="Year"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[Term]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Term"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[Term]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Term]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[Term Submission]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Term Submission"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[Term Submission]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Term Submission]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[College Number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="College Number"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[College Number]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[College Number]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[Student Identification Number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Student Identification Number"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[Student Identification Number]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Student Identification Number]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[Gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[Ethnic_Origin]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Ethnic_Origin"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[Ethnic_Origin]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Ethnic_Origin]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[Citizen]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Citizen"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[Citizen]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Citizen]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[FTIC]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="FTIC"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[FTIC]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[FTIC]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[PTIME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="PTIME"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[PTIME]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[PTIME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[EntClass]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="EntClass"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[EntClass]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[EntClass]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[AWARD]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="AWARD"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[AWARD]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[AWARD]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[DEGSEEK]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="DEGSEEK"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[DEGSEEK]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[DEGSEEK]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[TRANSFER]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="TRANSFER"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[TRANSFER]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[TRANSFER]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[LINE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="LINE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[LINE]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[LINE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[PYrHSgrads]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="PYrHSgrads"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[PYrHSgrads]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[PYrHSgrads]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[RESIDE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="RESIDE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[RESIDE]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[RESIDE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[R2State]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="R2State"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[R2State]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[R2State]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[BIRDATE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="BIRDATE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[BIRDATE]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[BIRDATE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].Columns[FLEID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="14"
+                      cachedName="FLEID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[FLEID]"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[FLEID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[Year]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[Term]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Term" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[Term Submission]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Term Submission" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[College Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="College Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[Student Identification Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Student Identification Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[Ethnic_Origin]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Ethnic_Origin" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[Citizen]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Citizen" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[FTIC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="FTIC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[PTIME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="PTIME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[EntClass]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="EntClass" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[AWARD]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="AWARD" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[DEGSEEK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="DEGSEEK" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[TRANSFER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="TRANSFER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[LINE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="LINE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[PYrHSgrads]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="PYrHSgrads" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[RESIDE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="RESIDE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[R2State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="R2State" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[BIRDATE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="BIRDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input].ExternalColumns[FLEID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      name="FLEID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Source - EF2IPFIL_T2B2016"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Year]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[Year]"
+                      length="4"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Term]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[Term]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Term]"
+                      name="Term"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Term Submission]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[Term Submission]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Term Submission]"
+                      name="Term Submission"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[College Number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[College Number]"
+                      length="2"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[College Number]"
+                      name="College Number"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Student Identification Number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[Student Identification Number]"
+                      length="10"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Student Identification Number]"
+                      name="Student Identification Number"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Ethnic_Origin]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[Ethnic_Origin]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Ethnic_Origin]"
+                      name="Ethnic_Origin"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Citizen]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[Citizen]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[Citizen]"
+                      name="Citizen"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[FTIC]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[FTIC]"
+                      length="2"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[FTIC]"
+                      name="FTIC"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[PTIME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[PTIME]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[PTIME]"
+                      name="PTIME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[EntClass]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[EntClass]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[EntClass]"
+                      name="EntClass"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[AWARD]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[AWARD]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[AWARD]"
+                      name="AWARD"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[DEGSEEK]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[DEGSEEK]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[DEGSEEK]"
+                      name="DEGSEEK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[TRANSFER]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[TRANSFER]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[TRANSFER]"
+                      name="TRANSFER"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[LINE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[LINE]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[LINE]"
+                      name="LINE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[PYrHSgrads]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[PYrHSgrads]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[PYrHSgrads]"
+                      name="PYrHSgrads"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[RESIDE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[RESIDE]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[RESIDE]"
+                      name="RESIDE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[R2State]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[R2State]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[R2State]"
+                      name="R2State"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[BIRDATE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[BIRDATE]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[BIRDATE]"
+                      name="BIRDATE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[FLEID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[FLEID]"
+                      length="14"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].Columns[FLEID]"
+                      name="FLEID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[Year]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[Term]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Term" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[Term Submission]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Term Submission" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[College Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="College Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[Student Identification Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Student Identification Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[Ethnic_Origin]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Ethnic_Origin" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[Citizen]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Citizen" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[FTIC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="FTIC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[PTIME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="PTIME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[EntClass]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="EntClass" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[AWARD]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="AWARD" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[DEGSEEK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="DEGSEEK" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[TRANSFER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="TRANSFER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[LINE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="LINE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[PYrHSgrads]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="PYrHSgrads" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[RESIDE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="RESIDE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[R2State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="R2State" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[BIRDATE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="BIRDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[FLEID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      name="FLEID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output].ExternalColumns[Column 0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="Column 0" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Flat File Source Output]"
+              endId="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt.Inputs[Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{9CB628F9-67CE-45F6-AC69-EBE3FDE45CFE}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B07FD491-2928-4D0C-A6AC-9234E5567DBB}"
+          SQLTask:SqlStatementSource="declare @str varchar(50)&#xA;set @str = replace(?,'.','_')&#xA;&#xA;exec ('CREATE TABLE [IPEDS].[' + @str + '] (&#xA;[Year] varchar(4),&#xA;[Term] varchar(1),&#xA;[Term Submission] varchar(1),&#xA;[College Number] varchar(2),&#xA;[Student Identification Number] varchar(10),&#xA;[Gender] varchar(1),&#xA;[Ethnic_Origin] varchar(1),&#xA;[Citizen] varchar(1),&#xA;[FTIC] varchar(2),&#xA;[PTIME] varchar(1),&#xA;[EntClass] varchar(1),&#xA;[AWARD] varchar(1),&#xA;[DEGSEEK] varchar(1),&#xA;[TRANSFER] varchar(1),&#xA;[LINE] varchar(1),&#xA;[PYrHSgrads] varchar(1),&#xA;[RESIDE] varchar(1),&#xA;[R2State] varchar(1),&#xA;[BIRDATE] varchar(1),&#xA;[FLEID] varchar(14)&#xA;);')&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@file_name"
+            SQLTask:DtsVariableName="User::EF2IPFIL_File_name"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Script Task"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{E28DB228-A89B-4642-B29B-A475298AF8C1}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Script Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_f1a11a4782e04efbb8e3d80097cd93a7"
+          VSTAMajorVersion="3"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::EF2IPFIL_File_name"
+          ReadWriteVariables="User::EF2IPFIL_Table">
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_f1a11a4782e04efbb8e3d80097cd93a7.Properties.Settings.get_Default():ST_f1a11a4782e04efbb8e3d80097cd93a7.Properties.Sett" +
+    "ings")]
+
+namespace ST_f1a11a4782e04efbb8e3d80097cd93a7.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
+/* The Script Task allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services control flow. 
+ * 
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script task. */
+#endregion
+
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+#endregion
+
+namespace ST_f1a11a4782e04efbb8e3d80097cd93a7
+{
+    /// <summary>
+    /// ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+    /// or parent of this class.
+    /// </summary>
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+        #region Help:  Using Integration Services variables and parameters in a script
+        /* To use a variable in this script, first ensure that the variable has been added to 
+         * either the list contained in the ReadOnlyVariables property or the list contained in 
+         * the ReadWriteVariables property of this script task, according to whether or not your
+         * code needs to write to the variable.  To add the variable, save this script, close this instance of
+         * Visual Studio, and update the ReadOnlyVariables and 
+         * ReadWriteVariables properties in the Script Transformation Editor window.
+         * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+         * 
+         * Example of reading from a variable:
+         *  DateTime startTime = (DateTime) Dts.Variables["System::StartTime"].Value;
+         * 
+         * Example of writing to a variable:
+         *  Dts.Variables["User::myStringVariable"].Value = "new value";
+         * 
+         * Example of reading from a package parameter:
+         *  int batchId = (int) Dts.Variables["$Package::batchId"].Value;
+         *  
+         * Example of reading from a project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].Value;
+         * 
+         * Example of reading from a sensitive project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].GetSensitiveValue();
+         * */
+
+        #endregion
+
+        #region Help:  Firing Integration Services events from a script
+        /* This script task can fire events for logging purposes.
+         * 
+         * Example of firing an error event:
+         *  Dts.Events.FireError(18, "Process Values", "Bad value", "", 0);
+         * 
+         * Example of firing an information event:
+         *  Dts.Events.FireInformation(3, "Process Values", "Processing has started", "", 0, ref fireAgain)
+         * 
+         * Example of firing a warning event:
+         *  Dts.Events.FireWarning(14, "Process Values", "No values received for input", "", 0);
+         * */
+        #endregion
+
+        #region Help:  Using Integration Services connection managers in a script
+        /* Some types of connection managers can be used in this script task.  See the topic 
+         * "Working with Connection Managers Programatically" for details.
+         * 
+         * Example of using an ADO.Net connection manager:
+         *  object rawConnection = Dts.Connections["Sales DB"].AcquireConnection(Dts.Transaction);
+         *  SqlConnection myADONETConnection = (SqlConnection)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Sales DB"].ReleaseConnection(rawConnection);
+         *
+         * Example of using a File connection manager
+         *  object rawConnection = Dts.Connections["Prices.zip"].AcquireConnection(Dts.Transaction);
+         *  string filePath = (string)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Prices.zip"].ReleaseConnection(rawConnection);
+         * */
+        #endregion
+
+
+		/// <summary>
+        /// This method is called when this script task executes in the control flow.
+        /// Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+        /// To open Help, press F1.
+        /// </summary>
+		public void Main()
+		{
+			// TODO: Add your code here
+
+
+            Dts.Variables["User::EF2IPFIL_Table"].Value = "[IPEDS].[" + Dts.Variables["User::EF2PFIL_File_name"].Value + "]";
+			Dts.TaskResult = (int)ScriptResults.Success;
+		}
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+	}
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_f1a11a4782e04efbb8e3d80097cd93a7.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{d5ad8d2e-f61f-476d-8527-44bb9fcc0161}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_f1a11a4782e04efbb8e3d80097cd93a7</RootNamespace>
+    <AssemblyName>ST_f1a11a4782e04efbb8e3d80097cd93a7</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+         <Generator>ResXFileCodeGenerator</Generator>
+         <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+             <AutoGen>True</AutoGen>
+         <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+         <Generator>SettingsSingleFileGenerator</Generator>
+         <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+         <AutoGen>True</AutoGen>
+         <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+         <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptTask"
+                           HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}"
+                           ApplicationType="usd"
+                           Language="cs"
+                           TemplatesPath=""
+                           DebugInfoExeName="#HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\10.0\InstallDir#\devenv.exe"
+                           DebugInfoCommandLine=""
+                           DebugInfoWorkingDir=""
+                           IconImageList=""/>
+        <Host Name="ScriptTask" GeneratedNamespace="$safeprojectname" IconIndex="">
+        </Host>
+        <ProjectClient>
+            <HostIdentifier>SSIS_ST120</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:Language>msBuild</msb:Language>
+		<msb:CodeName>ST_f1a11a4782e04efbb8e3d80097cd93a7</msb:CodeName>
+		<msb:DisplayName>ST_f1a11a4782e04efbb8e3d80097cd93a7</msb:DisplayName>
+		<msb:ProjectId>{58CF0BA2-DEEB-497A-9C20-01A7237C5274}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_f1a11a4782e04efbb8e3d80097cd93a7.csproj"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_f1a11a4782e04efbb8e3d80097cd93a7")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_f1a11a4782e04efbb8e3d80097cd93a7")]
+[assembly: AssemblyCopyright("Copyright @  2016")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_f1a11a4782e04efbb8e3d80097cd93a7.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_f1a11a4782e04efbb8e3d80097cd93a7.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_f1a11a4782e04efbb8e3d80097cd93a7.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_f1a11a4782e04efbb8e3d80097cd93a7.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_f1a11a4782e04efbb8e3d80097cd93a7.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_f1a11a4782e04efbb8e3d80097cd93a7.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAAIdR1gAAAAAAAAAAOAAAiELAQsAABAAAAAIAAAAAAAAfi4A
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAMAQIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAACQuAABXAAAAAEAAAAgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAhA4AAAAgAAAAEAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAAgEAAAAQAAAAAYAAAASAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAABg
+LgAAAAAAAEgAAAACAAUA2CEAAEwMAAABAAAAAAAAACAhAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKA4AAAoqEzACAC0AAAABAAARfgEAAAQtIHIBAABw0AIA
+AAIoDwAACm8QAAAKcxEAAAoKBoABAAAEfgEAAAQqGn4CAAAEKh4CgAIAAAQqGn4DAAAEKi5zBgAA
+BoADAAAEKh4CKBQAAAoqAAMwBABQAAAAAAAAAAIoFgAACm8XAAAKcnMAAHBvGAAACnKdAABwAigW
+AAAKbxcAAApysQAAcG8YAAAKbxkAAApy4QAAcCgaAAAKbxsAAAoCKBYAAAoWbxwAAAoqHgIoHQAA
+Ciq0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29y
+bGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3
+YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAA
+AAAAAFBBRFBBRFC0AAAAQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAAyAMAACN+
+AAA0BAAAvAUAACNTdHJpbmdzAAAAAPAJAADoAAAAI1VTANgKAAAQAAAAI0dVSUQAAADoCgAAZAEA
+ACNCbG9iAAAAAAAAAAIAAAFXHaIBCQMAAAD6JTMAFgAAAQAAAB4AAAAFAAAABgAAAAkAAAABAAAA
+HQAAAAIAAAAPAAAAAQAAAAIAAAADAAAABAAAAAEAAAAEAAAAAQAAAAEAAAAAAAoAAQAAAAAABgDB
+ALoACgDdAMgADgA9ARQBBgBZAboABgBvAV4BBgCgAYsBBgBXAj0CBgCCAnACBgCZAnACBgC2AnAC
+BgDVAnACBgDuAnACBgAHA3ACBgAiA3ACBgA9A3ACBgBWA3ACBgCPA28DBgCvA28DBgDgA80DBgD9
+A7oABgACBLoABgAmBHACCgBSBDwECgBrBDwEBgCABG8DDgCiBBQBDgDEBBQBEgAdBf0EEgA1Bf0E
+BgBRBboAAAAAAAEAAAAAAAEAAQAAABAAMgA8AAUAAQABAAABEABrADwACQADAAUAAQAQAHQAfwAN
+AAQACAADAQAAowAAABEABAAKABEAfwETABEArAEXABEA9gE5AAYGHwJHAFaAJwJKAFaALwJKAFAg
+AAAAAIMYvAEbAAEAWCAAAAAAkwjCAR8AAQCRIAAAAACTCNYBJAABAJggAAAAAJMI4gEpAAEAoCAA
+AAAAlggGAj0AAgCzIAAAAACGGLwBGwACAKcgAAAAAJEYmwSJAAIAvCAAAAAAhgAaAhsAAgAYIQAA
+AACGGLwBGwACAAAAAQA3AjkAvAFYAEEAvAFYAEkAvAFYAFEAvAFYAFkAvAFYAGEAvAFYAGkAvAFY
+AHEAvAFYAHkAvAFYAIEAvAFYAIkAvAFdAJEAvAEbAJkAvAEbAAkAvAEbAKEAFARiAKEALwRpACkA
+vAFuALkAvAF6AMkAvAEbABEAvAEbANEAvAEbABkA1gSNANkAJwWSAOEAPgWXAOkARwWdAPEAWAWh
+AOkAXwWoANkAaQVdABkAvAEbAAgAFABOAAgAGABTACkAkwCAAC4AGwAeAS4AIwAeAS4AYwBEAS4A
+CwCtAC4AEwD1AC4AMwD1AC4AKwAeAS4AOwAkAS4AQwAeAS4AWwA7AUMAawBTAEkAkwCAAGEAmwBT
+AIMAqwBTAHUAAgABAAMAAwAAAG8BLwAAAO4BNAAAABICQgACAAIAAwACAAMABQABAAQABQACAAUA
+BwAEgAAAAQAAACgYmWsAAAAAAAB/AAAABAAAAAAAAAAAAAAAAQCxAAAAAAAEAAAAAAAAAAAAAAAB
+ALoAAAAAAAwAAAAAAAAAAAAAAAoA9QAAAAAADAAAAAAAAAAAAAAACgDeBAAAAAAAAAAAAQAAAHgF
+AAAFAAQAAAAAPE1vZHVsZT4AU1RfZjFhMTFhNDc4MmUwNGVmYmI4ZTNkODAwOTdjZDkzYTcuZGxs
+AFJlc291cmNlcwBTVF9mMWExMWE0NzgyZTA0ZWZiYjhlM2Q4MDA5N2NkOTNhNy5Qcm9wZXJ0aWVz
+AFNldHRpbmdzAFNjcmlwdE1haW4AU1RfZjFhMTFhNDc4MmUwNGVmYmI4ZTNkODAwOTdjZDkzYTcA
+U2NyaXB0UmVzdWx0cwBtc2NvcmxpYgBTeXN0ZW0AT2JqZWN0AFN5c3RlbS5Db25maWd1cmF0aW9u
+AEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuU2NyaXB0VGFzawBN
+aWNyb3NvZnQuU3FsU2VydmVyLkR0cy5UYXNrcy5TY3JpcHRUYXNrAFZTVEFSVFNjcmlwdE9iamVj
+dE1vZGVsQmFzZQBFbnVtAFN5c3RlbS5SZXNvdXJjZXMAUmVzb3VyY2VNYW5hZ2VyAHJlc291cmNl
+TWFuAFN5c3RlbS5HbG9iYWxpemF0aW9uAEN1bHR1cmVJbmZvAHJlc291cmNlQ3VsdHVyZQAuY3Rv
+cgBnZXRfUmVzb3VyY2VNYW5hZ2VyAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAEN1bHR1cmUAZGVm
+YXVsdEluc3RhbmNlAGdldF9EZWZhdWx0AERlZmF1bHQATWFpbgB2YWx1ZV9fAFN1Y2Nlc3MARmFp
+bHVyZQB2YWx1ZQBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAFRhcmdldEZyYW1ld29ya0F0dHJp
+YnV0ZQBTeXN0ZW0uUmVmbGVjdGlvbgBBc3NlbWJseVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5RGVz
+Y3JpcHRpb25BdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5
+Q29tcGFueUF0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmln
+aHRBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRyaWJ1dGUAQXNzZW1ibHlDdWx0dXJlQXR0
+cmlidXRlAEFzc2VtYmx5VmVyc2lvbkF0dHJpYnV0ZQBTeXN0ZW0uUnVudGltZS5Db21waWxlclNl
+cnZpY2VzAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxp
+dHlBdHRyaWJ1dGUAU3lzdGVtLkRpYWdub3N0aWNzAERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1
+dGUAVHlwZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBBc3NlbWJseQBnZXRf
+QXNzZW1ibHkAU3lzdGVtLkNvbXBvbmVudE1vZGVsAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBF
+ZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQAuY2N0b3IAU1NJ
+U1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRlAFNjcmlwdE9iamVjdE1vZGVsAGdldF9EdHMA
+TWljcm9zb2Z0LlNxbFNlcnZlci5NYW5hZ2VkRFRTAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlJ1
+bnRpbWUAVmFyaWFibGVzAGdldF9WYXJpYWJsZXMAVmFyaWFibGUAZ2V0X0l0ZW0AZ2V0X1ZhbHVl
+AFN0cmluZwBDb25jYXQAc2V0X1ZhbHVlAHNldF9UYXNrUmVzdWx0AFNUX2YxYTExYTQ3ODJlMDRl
+ZmJiOGUzZDgwMDk3Y2Q5M2E3LlByb3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwAAAHFTAFQA
+XwBmADEAYQAxADEAYQA0ADcAOAAyAGUAMAA0AGUAZgBiAGIAOABlADMAZAA4ADAAMAA5ADcAYwBk
+ADkAMwBhADcALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAAClVAHMA
+ZQByADoAOgBFAEYAMgBJAFAARgBJAEwAXwBUAGEAYgBsAGUAABNbAEkAUABFAEQAUwBdAC4AWwAA
+L1UAcwBlAHIAOgA6AEUARgAyAFAARgBJAEwAXwBGAGkAbABlAF8AbgBhAG0AZQAAA10AAAAAAHKY
+DpOQLZVNogTzPrANLw8ACLd6XFYZNOCJCImEXc2AgMyRAwYSFQMGEhkDIAABBAAAEhUEAAASGQUA
+AQESGQQIABIVBAgAEhkDBhIMBAAAEgwECAASDAIGCAMGERQEAAAAAAQBAAAABCABAQ4EIAEBCAYA
+ARJREVUEIAASWQYgAgEOElkEBwESFQUgAQERYQgBAAIAAAAAAAMAAAEEIAASbQQgABJxBSABEnUc
+AyAAHAYAAw4cHBwEIAEBHEcBABouTkVURnJhbWV3b3JrLFZlcnNpb249djQuMAEAVA4URnJhbWV3
+b3JrRGlzcGxheU5hbWUQLk5FVCBGcmFtZXdvcmsgNCgBACNTVF9mMWExMWE0NzgyZTA0ZWZiYjhl
+M2Q4MDA5N2NkOTNhNwAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDE2AAAIAQAIAAAAAAAeAQAB
+AFQCFldyYXBOb25FeGNlcHRpb25UaHJvd3MBAEwuAAAAAAAAAAAAAG4uAAAAIAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAABgLgAAAAAAAAAAAAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwA
+AAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAA
+AABIAAAAWEAAALADAAAAAAAAAAAAALADNAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBP
+AAAAAAC9BO/+AAABAAAAAQCZaygYAAABAJlrKBg/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAA
+RAAAAAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBv
+AG4AAAAAAAAAsAQQAwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAADsAgAAAQAwADAA
+MAAwADAANABiADAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAAAAAAUwBU
+AF8AZgAxAGEAMQAxAGEANAA3ADgAMgBlADAANABlAGYAYgBiADgAZQAzAGQAOAAwADAAOQA3AGMA
+ZAA5ADMAYQA3AAAAQAAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADYAMQA4
+ADQALgAyADcANQA0ADUAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBUAF8A
+ZgAxAGEAMQAxAGEANAA3ADgAMgBlADAANABlAGYAYgBiADgAZQAzAGQAOAAwADAAOQA3AGMAZAA5
+ADMAYQA3AC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8A
+cAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAxADYAAAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBp
+AGwAZQBuAGEAbQBlAAAAUwBUAF8AZgAxAGEAMQAxAGEANAA3ADgAMgBlADAANABlAGYAYgBiADgA
+ZQAzAGQAOAAwADAAOQA3AGMAZAA5ADMAYQA3AC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0
+AE4AYQBtAGUAAAAAAFMAVABfAGYAMQBhADEAMQBhADQANwA4ADIAZQAwADQAZQBmAGIAYgA4AGUA
+MwBkADgAMAAwADkANwBjAGQAOQAzAGEANwAAAEQADwABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBp
+AG8AbgAAADEALgAwAC4ANgAxADgANAAuADIANwA1ADQANQAAAAAASAAPAAEAQQBzAHMAZQBtAGIA
+bAB5ACAAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4ANgAxADgANAAuADIANwA1ADQANQAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAwAAACAPgAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{31413371-5F9E-48B6-9AF0-FEFA0BAE9E72}"
+      DTS:From="Package\Preparation SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Script Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{19A1FE14-87D9-44A8-9A4C-D4A4E07F4699}"
+      DTS:From="Package\Script Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Data Flow Task 1"
+          TopLeft="20.47142858116,180.511765735454" />
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\Preparation SQL Task 1"
+          TopLeft="5.50000000000001,5.49999999999995" />
+        <NodeLayout
+          Size="131.2,41.6"
+          Id="Package\Script Task"
+          TopLeft="34.8571434507564,91.7647071693183" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="100.178571725378,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.6647071693184"
+              Start="0,0"
+              End="0,37.1647071693184">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.1647071693184" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="100.464286015958,133.364707169318">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.1470585661362"
+              Start="0,0"
+              End="0,39.6470585661362">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.6470585661362" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="244.8,41.6"
+          Id="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt"
+          TopLeft="5.50000000000001,107.1" />
+        <NodeLayout
+          Size="211.2,41.6"
+          Id="Package\Data Flow Task 1\Source - EF2IPFIL_T2B2016"
+          TopLeft="22.3,5.50000000000007" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[Flat File Source Output]"
+          TopLeft="127.9,47.1000000000001">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\Destination - EF2IPFILT2B2016_txt">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
