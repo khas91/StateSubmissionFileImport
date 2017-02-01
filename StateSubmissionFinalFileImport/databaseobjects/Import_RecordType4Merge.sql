@@ -1,7 +1,7 @@
 USE [StateSubmission]
 GO
 
-/****** Object:  StoredProcedure [Import].[RecordType4Merge]    Script Date: 2/1/2017 9:42:41 AM ******/
+/****** Object:  StoredProcedure [Import].[RecordType4Merge]    Script Date: 2/1/2017 10:29:52 AM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -59,7 +59,8 @@ WHEN NOT MATCHED BY Target THEN
 		[SubmissionType],
 		[SubmissionDate],
 		[InsertDate],
-		PGM_CD
+		PGM_CD,
+		[FLEID]
 		) 
 	Values (
 		Source.[1017_College],
@@ -90,7 +91,8 @@ WHEN NOT MATCHED BY Target THEN
 		@SubmissionType,
 		@SubmissionDate,
 		getDate(),
-		Source.PGM_CD)
+		Source.PGM_CD,
+		Source.[FloridaEducationId])
 	OUTPUT $Action;
 END
 
