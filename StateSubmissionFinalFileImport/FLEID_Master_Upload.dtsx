@@ -1,0 +1,1819 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/12/2017 2:45:52 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="AEC-SPIERSON-02"
+  DTS:CreatorName="FSCJ\spierson"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{D111F148-23C3-4CDE-983D-E67525F4B065}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="FLEID_Master_Upload"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{13D3DB18-3CCE-4E28-8E90-24D3C35914BA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4C155577-0D0F-4BAE-AE29-817552EAC46A}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=vulcan;Initial Catalog=Adhoc;Provider=SQLOLEDB;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{64ED1CC4-D428-47FB-AF3F-2FC80CABB9D2}"
+      DTS:ObjectName="SourceConnectionFlatFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="RaggedRight"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter="_x000D__x000A_"
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="Z:\FLEID\FLEID_Master.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="4"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:ObjectName="Year"
+              DTS:DTSID="{56A088F2-0898-45CA-B51D-03268BC5E1AE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="6"
+              DTS:MaximumWidth="6"
+              DTS:DataType="129"
+              DTS:ObjectName="Filler"
+              DTS:DTSID="{DACB9F90-9413-4CAE-BA22-0F3D39FAAAA4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="6"
+              DTS:MaximumWidth="6"
+              DTS:DataType="129"
+              DTS:ObjectName="OPEID"
+              DTS:DTSID="{51F9FC5F-F0C6-41B3-923E-AA6784CBD218}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="2"
+              DTS:MaximumWidth="2"
+              DTS:DataType="129"
+              DTS:ObjectName="Filler1"
+              DTS:DTSID="{290078DA-BA1B-4D10-B7FF-6123A1F9856E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="7"
+              DTS:MaximumWidth="7"
+              DTS:DataType="129"
+              DTS:ObjectName="PersonNum"
+              DTS:DTSID="{4E3F1BD1-523A-4772-8BB6-A7474E1086DC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="23"
+              DTS:MaximumWidth="23"
+              DTS:DataType="129"
+              DTS:ObjectName="Filler2"
+              DTS:DTSID="{94D09EDB-5ED5-420B-86AD-E66EF622B2A4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="9"
+              DTS:MaximumWidth="9"
+              DTS:DataType="129"
+              DTS:ObjectName="SSN"
+              DTS:DTSID="{73AC3F52-51EE-4C9B-9A48-14C9562D58AA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="10"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:ObjectName="Filler3"
+              DTS:DTSID="{74E7973F-D80A-45B2-B0C1-BB09B0444D0F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="100"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:ObjectName="FirstName"
+              DTS:DTSID="{24AEE450-4484-4295-9939-A28770FCB7E0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="100"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:ObjectName="LastName"
+              DTS:DTSID="{F1FA1202-EB97-43DA-B4DB-4A5DC6465BA3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="100"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:ObjectName="MaidenName"
+              DTS:DTSID="{B63B9C3A-5599-4754-B9DB-3E4C0216695E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="30"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:ObjectName="Appendage"
+              DTS:DTSID="{7DA66C3C-3421-4C8F-BDBE-DBA94594BD40}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="50"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:ObjectName="MiddleName"
+              DTS:DTSID="{983D9AA3-61D8-48B7-BBAB-34208E04B649}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="MiddleInitial"
+              DTS:DTSID="{46617F20-ACED-4E82-8371-4081A1FDC8F3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="8"
+              DTS:MaximumWidth="8"
+              DTS:DataType="129"
+              DTS:ObjectName="DateofBirth"
+              DTS:DTSID="{DA89EE81-33FC-47C7-8F19-F085D683A68A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="8"
+              DTS:MaximumWidth="8"
+              DTS:DataType="129"
+              DTS:ObjectName="Filler4"
+              DTS:DTSID="{8F2CD0EA-2DC9-40D4-B7AF-6088467B8B76}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="Gender"
+              DTS:DTSID="{D5EF3CB3-5A9B-4352-87C0-75222D2B431A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="Race"
+              DTS:DTSID="{3F249284-175B-48F8-BAAD-5F7484CE149B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="RaceHispanic"
+              DTS:DTSID="{9F06F02C-AF70-439E-BD52-E4D683195819}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="RaceWhite"
+              DTS:DTSID="{61736112-127C-4F9F-8197-D73680CB8240}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="RaceAsian"
+              DTS:DTSID="{0FD59B8D-4130-473B-A209-2EA7B9388A7B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="RaceBlack"
+              DTS:DTSID="{63DEBF77-D6BA-4A48-9612-670CCBD4DFC1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="RaceHawaiian"
+              DTS:DTSID="{37F8D8FF-3E9D-4F52-A2D4-100D4687FD1D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="RaceAmericanIndian"
+              DTS:DTSID="{9EAAB9FC-3ACD-474C-8E3F-7AEAB679E4D6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="MultiBirthIndicator"
+              DTS:DTSID="{7DFAB359-2D02-4BF0-A436-7B418F9CC7B8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="50"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:ObjectName="BirthPlace"
+              DTS:DTSID="{BCC5C1E0-4459-47F9-B17D-D6B40A9D1A99}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="4"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:ObjectName="SourceIndicator"
+              DTS:DTSID="{427B078C-6BE7-4602-AF52-8F2226A3ABD5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="8"
+              DTS:MaximumWidth="8"
+              DTS:DataType="129"
+              DTS:ObjectName="Date first entered Florida Institution"
+              DTS:DTSID="{37888BD2-576D-48E9-9D7E-C94A24E8AB8A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="8"
+              DTS:MaximumWidth="8"
+              DTS:DataType="129"
+              DTS:ObjectName="Date first entered U.S. school"
+              DTS:DTSID="{1A3A3FD5-197B-4D8A-BA2A-067D58E60506}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="8"
+              DTS:MaximumWidth="8"
+              DTS:DataType="129"
+              DTS:ObjectName="Prior School of Enrollment"
+              DTS:DTSID="{495FEFAF-7CF9-46D1-9B1E-18966F212327}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="RecordType"
+              DTS:DTSID="{F13B0E80-FBF3-4506-A2BD-22DE620D339E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="8"
+              DTS:MaximumWidth="8"
+              DTS:DataType="129"
+              DTS:ObjectName="Term"
+              DTS:DTSID="{455E20E8-E01D-4329-A9B6-B7763B703B8E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="1"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:ObjectName="Column 32"
+              DTS:DTSID="{3051C1F3-E0D6-48CA-A7BE-4FA4F36EE587}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="14"
+              DTS:MaximumWidth="14"
+              DTS:DataType="129"
+              DTS:ObjectName="FLEID"
+              DTS:DTSID="{4C8EC5C9-D5AF-47E3-9336-61074A44292B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 34"
+              DTS:DTSID="{7A3979CD-8F36-4AC8-86FF-1D7DC4F2F9F9}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{10D07F1F-7B8F-4059-832E-6790B0EF3D99}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - FLEID_Master"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - FLEID_Master"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FLEID_MASTER]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - FLEID_Master.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[Year]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="Year"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[OPEID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="OPEID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[OPEID]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[OPEID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[PersonNum]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="PersonNum"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[PersonNum]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[PersonNum]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="9"
+                      cachedName="SSN"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[SSN]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[SSN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[FirstName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[FirstName]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[LastName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[LastName]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[MaidenName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="MaidenName"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[MaidenName]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[MaidenName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[Appendage]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Appendage"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[Appendage]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Appendage]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[MiddleName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MiddleName"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[MiddleName]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[MiddleName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[MiddleInitial]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="MiddleInitial"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[MiddleInitial]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[MiddleInitial]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[DateofBirth]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="DateofBirth"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[DateofBirth]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[DateofBirth]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[Gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[Race]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Race"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[Race]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Race]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[RaceHispanic]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="RaceHispanic"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[RaceHispanic]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceHispanic]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[RaceWhite]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="RaceWhite"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[RaceWhite]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceWhite]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[RaceAsian]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="RaceAsian"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[RaceAsian]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceAsian]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[RaceBlack]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="RaceBlack"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[RaceBlack]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceBlack]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[RaceHawaiian]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="RaceHawaiian"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[RaceHawaiian]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceHawaiian]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[RaceAmericanIndian]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="RaceAmericanIndian"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[RaceAmericanIndian]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceAmericanIndian]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[MultiBirthIndicator]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="MultiBirthIndicator"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[MultiBirthIndicator]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[MultiBirthIndicator]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[BirthPlace]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="BirthPlace"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[BirthPlace]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[BirthPlace]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[SourceIndicator]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="SourceIndicator"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[SourceIndicator]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[SourceIndicator]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[Date first entered Florida Institution]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="Date first entered Florida Institution"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[Date first entered Florida Institution]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Date first entered Florida Institution]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[Date first entered U.S. school]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="Date first entered U.S. school"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[Date first entered U.S. school]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Date first entered U.S. school]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[Prior School of Enrollment]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="Prior School of Enrollment"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[Prior School of Enrollment]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Prior School of Enrollment]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[RecordType]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="RecordType"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[RecordType]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RecordType]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[Term]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="Term"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[Term]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Term]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].Columns[FLEID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="14"
+                      cachedName="FLEID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[FLEID]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[FLEID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[Year]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[OPEID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="OPEID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[PersonNum]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="PersonNum" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="SSN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[MaidenName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="MaidenName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[Appendage]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Appendage" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[MiddleName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MiddleName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[MiddleInitial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="MiddleInitial" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[DateofBirth]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="DateofBirth" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[Race]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Race" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[RaceHispanic]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="RaceHispanic" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[RaceWhite]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="RaceWhite" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[RaceAsian]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="RaceAsian" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[RaceBlack]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="RaceBlack" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[RaceHawaiian]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="RaceHawaiian" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[RaceAmericanIndian]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="RaceAmericanIndian" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[MultiBirthIndicator]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="MultiBirthIndicator" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[BirthPlace]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="BirthPlace" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[SourceIndicator]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="SourceIndicator" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[Date first entered Florida Institution]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="Date first entered Florida Institution" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[Date first entered U.S. school]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="Date first entered U.S. school" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[Prior School of Enrollment]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="Prior School of Enrollment" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[RecordType]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="RecordType" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[Term]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="Term" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input].ExternalColumns[FLEID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      name="FLEID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - FLEID_Master.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - FLEID_Master.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEID_Master.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - FLEID_Master.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - FLEID_Master_txt"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Source - FLEID_Master_txt"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Year]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Year]"
+                      length="4"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[OPEID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[OPEID]"
+                      length="6"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[OPEID]"
+                      name="OPEID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[PersonNum]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[PersonNum]"
+                      length="7"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[PersonNum]"
+                      name="PersonNum"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[SSN]"
+                      length="9"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[SSN]"
+                      name="SSN"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[FirstName]"
+                      length="100"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[LastName]"
+                      length="100"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[MaidenName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[MaidenName]"
+                      length="100"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[MaidenName]"
+                      name="MaidenName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Appendage]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Appendage]"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Appendage]"
+                      name="Appendage"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[MiddleName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[MiddleName]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[MiddleName]"
+                      name="MiddleName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[MiddleInitial]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[MiddleInitial]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[MiddleInitial]"
+                      name="MiddleInitial"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[DateofBirth]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[DateofBirth]"
+                      length="8"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[DateofBirth]"
+                      name="DateofBirth"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Race]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Race]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Race]"
+                      name="Race"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceHispanic]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[RaceHispanic]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceHispanic]"
+                      name="RaceHispanic"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceWhite]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[RaceWhite]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceWhite]"
+                      name="RaceWhite"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceAsian]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[RaceAsian]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceAsian]"
+                      name="RaceAsian"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceBlack]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[RaceBlack]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceBlack]"
+                      name="RaceBlack"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceHawaiian]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[RaceHawaiian]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceHawaiian]"
+                      name="RaceHawaiian"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceAmericanIndian]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[RaceAmericanIndian]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RaceAmericanIndian]"
+                      name="RaceAmericanIndian"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[MultiBirthIndicator]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[MultiBirthIndicator]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[MultiBirthIndicator]"
+                      name="MultiBirthIndicator"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[BirthPlace]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[BirthPlace]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[BirthPlace]"
+                      name="BirthPlace"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[SourceIndicator]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[SourceIndicator]"
+                      length="4"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[SourceIndicator]"
+                      name="SourceIndicator"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Date first entered Florida Institution]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Date first entered Florida Institution]"
+                      length="8"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Date first entered Florida Institution]"
+                      name="Date first entered Florida Institution"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Date first entered U.S. school]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Date first entered U.S. school]"
+                      length="8"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Date first entered U.S. school]"
+                      name="Date first entered U.S. school"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Prior School of Enrollment]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Prior School of Enrollment]"
+                      length="8"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Prior School of Enrollment]"
+                      name="Prior School of Enrollment"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RecordType]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[RecordType]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[RecordType]"
+                      name="RecordType"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Term]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Term]"
+                      length="8"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[Term]"
+                      name="Term"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[FLEID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[FLEID]"
+                      length="14"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].Columns[FLEID]"
+                      name="FLEID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Year]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Filler]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="Filler" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[OPEID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="OPEID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Filler1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="Filler1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[PersonNum]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="PersonNum" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Filler2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="23"
+                      name="Filler2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="SSN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Filler3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Filler3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[MaidenName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="MaidenName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Appendage]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Appendage" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[MiddleName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MiddleName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[MiddleInitial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="MiddleInitial" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[DateofBirth]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="DateofBirth" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Filler4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="Filler4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Race]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Race" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[RaceHispanic]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="RaceHispanic" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[RaceWhite]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="RaceWhite" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[RaceAsian]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="RaceAsian" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[RaceBlack]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="RaceBlack" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[RaceHawaiian]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="RaceHawaiian" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[RaceAmericanIndian]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="RaceAmericanIndian" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[MultiBirthIndicator]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="MultiBirthIndicator" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[BirthPlace]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="BirthPlace" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[SourceIndicator]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="SourceIndicator" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Date first entered Florida Institution]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="Date first entered Florida Institution" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Date first entered U.S. school]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="Date first entered U.S. school" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Prior School of Enrollment]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="Prior School of Enrollment" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[RecordType]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="RecordType" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Term]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="Term" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Column 32]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Column 32" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[FLEID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      name="FLEID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output].ExternalColumns[Column 34]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 34" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Flat File Source Output]"
+              endId="Package\Data Flow Task 1\Destination - FLEID_Master.Inputs[Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task 1\Source - FLEID_Master_txt.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Data Flow Task 1"
+          TopLeft="20.5,107.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Data Flow Task 1\Source - FLEID_Master_txt"
+          TopLeft="7.00000000000001,5.5" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\Data Flow Task 1\Destination - FLEID_Master"
+          TopLeft="5.50000000000001,107.5" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[Flat File Source Output]"
+          TopLeft="109.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\Destination - FLEID_Master">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

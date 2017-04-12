@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SDB_Import_Non_Final"
   DTS:PackageType="5"
-  DTS:VersionBuild="102"
-  DTS:VersionGUID="{4CCA8958-2E3E-4E89-9D0A-FD70552E51A7}">
+  DTS:VersionBuild="106"
+  DTS:VersionGUID="{7B162E71-6E15-417E-BD62-7C34671A5665}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -32,7 +32,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="Z:\State Submissions\SDB Submission\16-17\T3B2017\20170130A - LOAD\student.t3B2017">
+          DTS:ConnectionString="Z:\State Submissions\SDB Submission\16-17\T2E2017\20170130A - LOAD\student.t2E2017">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -441,7 +441,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileLocation">
       <DTS:VariableValue
-        DTS:DataType="8">Z:\State Submissions\SDB Submission\16-17\T3B2017\20170130A - LOAD\</DTS:VariableValue>
+        DTS:DataType="8">Z:\State Submissions\SDB Submission\16-17\T2E2017\20170130A - LOAD\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -450,7 +450,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileNameStudent">
       <DTS:VariableValue
-        DTS:DataType="8">student.t3B2017</DTS:VariableValue>
+        DTS:DataType="8">student.t2E2017</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -468,7 +468,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SubmissionType">
       <DTS:VariableValue
-        DTS:DataType="8">B</DTS:VariableValue>
+        DTS:DataType="8">E</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -503,7 +503,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{D99D40A4-987D-4AE5-91D8-6602A2095981}"
-          SQLTask:SqlStatementSource="declare @str varchar(50)&#xA;set @str = replace(?,'.','_')&#xA;&#xA;exec ('&#xA;select * into [History].[' + @str + ']&#xA;from Import.GenericImportedStudentSubmission&#xA;')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="declare @str varchar(50)&#xA;set @str = replace(?,'.','_')&#xA;&#xA;exec ('&#xA;select * into [History].[' + @str + '_COPY]&#xA;from Import.GenericImportedStudentSubmission&#xA;')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="@studentTableName"
             SQLTask:DtsVariableName="User::FileNameStudent"
@@ -1388,13 +1388,13 @@
     design-time-name="Package\Load Generic into StateSubmission Database">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="248,41.6"
+          Size="248,42"
           Id="Package\Load Generic into StateSubmission Database\GenericImportedStudentSubmission"
           TopLeft="5.50000000000003,107.1" />
         <NodeLayout
-          Size="153.6,41.6"
+          Size="154,42"
           Id="Package\Load Generic into StateSubmission Database\Student Generic"
           TopLeft="52.7,5.49999999999995" />
         <EdgeLayout
@@ -1416,9 +1416,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

@@ -7,12 +7,12 @@
   DTS:CreatorName="FSCJ\klavalle"
   DTS:DTSID="{AA929B72-8F98-4869-A2D9-E01B19559074}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="PDB_Import"
   DTS:PackageType="5"
-  DTS:VersionBuild="95"
-  DTS:VersionGUID="{8A441FDC-2B8A-4FC9-8F4E-993588616FD0}">
+  DTS:VersionBuild="102"
+  DTS:VersionGUID="{EB7F631A-E6A4-4B18-ADE6-281EE92850EE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -26,27 +26,21 @@
         DTS:Name="ConnectionString">@[User::FileLocation] +  @[User::FileNameAdmissions]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:Format="FixedWidth"
+          DTS:Format="Delimited"
           DTS:LocaleID="1033"
           DTS:HeaderRowDelimiter="_x000D__x000A_"
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\spierson\Desktop\StateSubmissionFinalFileImport\StateSubmissionFinalFileImport\Submissions\person.t1e2017">
+          DTS:ConnectionString="Z:\State Submissions\PDB Submission\16-17\T2E2017\20170303\person.t2e2017">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="150"
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="150"
               DTS:DataType="129"
               DTS:ObjectName="Filler"
-              DTS:DTSID="{9CAD4A05-F653-4E6C-A7ED-8E7B57601874}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="2"
-              DTS:DataType="129"
-              DTS:ObjectName="EOF"
-              DTS:DTSID="{8C12BCA2-D3AB-4A51-BBE7-10A1AA117A0F}"
+              DTS:DTSID="{F9EDF94E-57A0-47A5-8A30-3D2A9619E1FD}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -68,7 +62,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\spierson\Desktop\StateSubmissionFinalFileImport\StateSubmissionFinalFileImport\Submissions\person.t1e2017">
+          DTS:ConnectionString="Z:\State Submissions\PDB Submission\16-17\T2E2017\20170303\person.t2e2017">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -107,7 +101,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileLocation">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\spierson\Desktop\StateSubmissionFinalFileImport\StateSubmissionFinalFileImport\Submissions\</DTS:VariableValue>
+        DTS:DataType="8">Z:\State Submissions\PDB Submission\16-17\T2E2017\20170303\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -116,7 +110,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileNameAdmissions">
       <DTS:VariableValue
-        DTS:DataType="8">person.t1e2017</DTS:VariableValue>
+        DTS:DataType="8">person.t2e2017</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -125,7 +119,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SubmissionDate">
       <DTS:VariableValue
-        DTS:DataType="8">09/28/2016</DTS:VariableValue>
+        DTS:DataType="8">3/3/2017</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -218,7 +212,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -269,7 +263,7 @@
                       refId="Package\Load Generic into StateSubmission Database\GenericImportedPersonnelSubmission.Inputs[OLE DB Destination Input].Columns[Filler]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="255"
+                      cachedLength="150"
                       cachedName="Filler"
                       externalMetadataColumnId="Package\Load Generic into StateSubmission Database\GenericImportedPersonnelSubmission.Inputs[OLE DB Destination Input].ExternalColumns[Filler]"
                       lineageId="Package\Load Generic into StateSubmission Database\Personnel Generic.Outputs[Flat File Source Output].Columns[Filler]" />
@@ -354,31 +348,9 @@
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Load Generic into StateSubmission Database\Personnel Generic.Outputs[Flat File Source Output].ExternalColumns[Filler]"
-                      length="255"
+                      length="150"
                       lineageId="Package\Load Generic into StateSubmission Database\Personnel Generic.Outputs[Flat File Source Output].Columns[Filler]"
                       name="Filler"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the data is in binary format."
-                          name="UseBinaryFormat">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Generic into StateSubmission Database\Personnel Generic.Outputs[Flat File Source Output].Columns[EOF]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Generic into StateSubmission Database\Personnel Generic.Outputs[Flat File Source Output].ExternalColumns[EOF]"
-                      length="255"
-                      lineageId="Package\Load Generic into StateSubmission Database\Personnel Generic.Outputs[Flat File Source Output].Columns[EOF]"
-                      name="EOF"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -398,14 +370,8 @@
                       refId="Package\Load Generic into StateSubmission Database\Personnel Generic.Outputs[Flat File Source Output].ExternalColumns[Filler]"
                       codePage="1252"
                       dataType="str"
-                      length="255"
+                      length="150"
                       name="Filler" />
-                    <externalMetadataColumn
-                      refId="Package\Load Generic into StateSubmission Database\Personnel Generic.Outputs[Flat File Source Output].ExternalColumns[EOF]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      name="EOF" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -632,31 +598,31 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="220,41.6"
+          Size="220,42"
           Id="Package\Clear Generic Personnel Table"
           TopLeft="40,5.5" />
         <NodeLayout
-          Size="212.8,41.6"
+          Size="213,42"
           Id="Package\Create History table for data"
           TopLeft="43.5,209.5" />
         <NodeLayout
-          Size="288.8,41.6"
+          Size="289,42"
           Id="Package\Load Generic into StateSubmission Database"
           TopLeft="5.50000000000003,107.5" />
         <NodeLayout
-          Size="230.4,41.6"
+          Size="230,42"
           Id="Package\Merge Import Data to RT1 table"
           TopLeft="35,311.5" />
         <NodeLayout
-          Size="230.4,41.6"
+          Size="230,42"
           Id="Package\Merge Import Data to RT2 table"
           TopLeft="35.0000000000001,413.5" />
         <NodeLayout
-          Size="230.4,41.6"
+          Size="230,42"
           Id="Package\Merge Import Data to RT3 table"
           TopLeft="35.0000000000001,515.5" />
         <NodeLayout
-          Size="230.4,41.6"
+          Size="230,42"
           Id="Package\Merge Import Data to RT4 table"
           TopLeft="35.57142858116,616.888235285538" />
         <EdgeLayout
@@ -832,5 +798,18 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Generic into StateSubmission Database\GenericImportedPersonnelSubmission">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

@@ -7,12 +7,12 @@
   DTS:CreatorName="FSCJ\klavalle"
   DTS:DTSID="{175728E9-A929-4B58-8867-020638EACA0F}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="SDB_Import"
   DTS:PackageType="5"
-  DTS:VersionBuild="96"
-  DTS:VersionGUID="{C5ED9C1C-E5DD-4432-B108-B528872CC69E}">
+  DTS:VersionBuild="99"
+  DTS:VersionGUID="{A372304A-79EB-46BB-9691-5306E78724C7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -32,7 +32,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="Z:\State Submissions\SDB Submission\16-17\T1E2017\20160930 - FINAL\student.t1E2017">
+          DTS:ConnectionString="Z:\State Submissions\SDB Submission\16-17\T3B2017\20170306b\student.t3B2017">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -441,7 +441,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileLocation">
       <DTS:VariableValue
-        DTS:DataType="8">Z:\State Submissions\SDB Submission\16-17\T1E2017\20160930 - FINAL\</DTS:VariableValue>
+        DTS:DataType="8">Z:\State Submissions\SDB Submission\16-17\T3B2017\20170306b\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -450,7 +450,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileNameStudent">
       <DTS:VariableValue
-        DTS:DataType="8">student.t1E2017</DTS:VariableValue>
+        DTS:DataType="8">student.t3B2017</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -459,7 +459,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SubmissionDate">
       <DTS:VariableValue
-        DTS:DataType="8">9/30/2016</DTS:VariableValue>
+        DTS:DataType="8">3/6/2016</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -468,7 +468,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SubmissionType">
       <DTS:VariableValue
-        DTS:DataType="8">E</DTS:VariableValue>
+        DTS:DataType="8">B</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -552,7 +552,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1118,47 +1118,47 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="211.2,41.6"
+          Size="211,42"
           Id="Package\Clear Generic Student Table"
           TopLeft="44.7,5.49999999999995" />
         <NodeLayout
-          Size="212.8,41.6"
+          Size="213,42"
           Id="Package\Create History table for data"
           TopLeft="43.9,208.7" />
         <NodeLayout
-          Size="289.6,41.6"
+          Size="290,42"
           Id="Package\Load Generic into StateSubmission Database"
           TopLeft="5.50000000000003,107.1" />
         <NodeLayout
-          Size="230.4,41.6"
+          Size="230,42"
           Id="Package\Merge Import Data to RT1 table"
           TopLeft="35.1000000000001,310.3" />
         <NodeLayout
-          Size="230.4,41.6"
+          Size="230,42"
           Id="Package\Merge Import Data to RT2 table"
           TopLeft="35.1000000000001,411.9" />
         <NodeLayout
-          Size="230.4,41.6"
+          Size="230,42"
           Id="Package\Merge Import Data to RT3 table"
           TopLeft="35.1000000000001,513.5" />
         <NodeLayout
-          Size="230.4,41.6"
+          Size="230,42"
           Id="Package\Merge Import Data to RT4 table"
           TopLeft="35.1000000000001,615.1" />
         <NodeLayout
-          Size="230.4,41.6"
+          Size="230,42"
           Id="Package\Merge Import Data to RT5 table"
           TopLeft="35.1000000000001,716.7" />
         <NodeLayout
-          Size="230.4,41.6"
+          Size="230,42"
           Id="Package\Merge Import Data to RT6 table"
           TopLeft="35.1000000000001,818.3" />
         <NodeLayout
-          Size="230.4,41.6"
+          Size="230,42"
           Id="Package\Merge Import Data to RT7 table"
           TopLeft="35.1000000000001,919.9" />
         <NodeLayout
-          Size="230.4,41.6"
+          Size="230,42"
           Id="Package\Merge Import Data to RT9 table"
           TopLeft="35.1000000000002,1021.5" />
         <EdgeLayout
@@ -1388,13 +1388,13 @@
     design-time-name="Package\Load Generic into StateSubmission Database">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="248,41.6"
+          Size="248,42"
           Id="Package\Load Generic into StateSubmission Database\GenericImportedStudentSubmission"
           TopLeft="5.50000000000003,107.1" />
         <NodeLayout
-          Size="153.6,41.6"
+          Size="154,42"
           Id="Package\Load Generic into StateSubmission Database\Student Generic"
           TopLeft="52.7,5.49999999999995" />
         <EdgeLayout
@@ -1416,9 +1416,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

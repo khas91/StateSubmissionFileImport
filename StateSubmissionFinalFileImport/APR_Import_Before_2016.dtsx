@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="APR_Import_Before_2016"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{4A292697-DAAE-4003-8C2D-143328CD7210}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{39571EB1-336D-4A65-9CAF-AC036F194A60}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -31,7 +31,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="Z:\State Submissions\APR\2012\staff.tpd2012">
+          DTS:ConnectionString="Z:\State Submissions\APR\2015\staff.tpd2015">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -75,7 +75,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="fileName">
       <DTS:VariableValue
-        DTS:DataType="8">staff.tpd2012</DTS:VariableValue>
+        DTS:DataType="8">staff.tpd2015</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -84,7 +84,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="filePath">
       <DTS:VariableValue
-        DTS:DataType="8">Z:\State Submissions\APR\2012\staff.tpd2012</DTS:VariableValue>
+        DTS:DataType="8">Z:\State Submissions\APR\2015\staff.tpd2015</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -93,7 +93,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SubmissionDate">
       <DTS:VariableValue
-        DTS:DataType="8">10/12/2011</DTS:VariableValue>
+        DTS:DataType="8">10/29/2014</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -102,7 +102,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="year">
       <DTS:VariableValue
-        DTS:DataType="8">2012</DTS:VariableValue>
+        DTS:DataType="8">2015</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -1922,7 +1922,7 @@
         <NodeLayout
           Size="168,42"
           Id="Package\CreateHistoryTable"
-          TopLeft="176,274" />
+          TopLeft="177,273" />
         <NodeLayout
           Size="151,42"
           Id="Package\Data Flow Task"
@@ -1971,26 +1971,26 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-42.5,60"
+              EndConnector="-41.5,59"
               Start="0,0"
-              End="-42.5,52.5">
+              End="-41.5,51.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26" />
+                    End="0,25.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="-4,30" />
+                    Point1="0,25.5"
+                    Point2="0,29.5"
+                    Point3="-4,29.5" />
                   <mssgle:LineSegment
-                    End="-38.5,30" />
+                    End="-37.5,29.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-38.5,30"
-                    Point2="-42.5,30"
-                    Point3="-42.5,34" />
+                    Point1="-37.5,29.5"
+                    Point2="-41.5,29.5"
+                    Point3="-41.5,33.5" />
                   <mssgle:LineSegment
-                    End="-42.5,52.5" />
+                    End="-41.5,51.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2001,30 +2001,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="260,316">
+          TopLeft="261,315">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="29.5,43"
+              EndConnector="28.5,44"
               Start="0,0"
-              End="29.5,35.5">
+              End="28.5,36.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.5" />
+                    End="0,18" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,17.5"
-                    Point2="0,21.5"
-                    Point3="4,21.5" />
+                    Point1="0,18"
+                    Point2="0,22"
+                    Point3="4,22" />
                   <mssgle:LineSegment
-                    End="25.5,21.5" />
+                    End="24.5,22" />
                   <mssgle:CubicBezierSegment
-                    Point1="25.5,21.5"
-                    Point2="29.5,21.5"
-                    Point3="29.5,25.5" />
+                    Point1="24.5,22"
+                    Point2="28.5,22"
+                    Point3="28.5,26" />
                   <mssgle:LineSegment
-                    End="29.5,35.5" />
+                    End="28.5,36.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2040,7 +2040,7 @@
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150,42"
           Id="Package\Data Flow Task\OLE DB Source"
@@ -2072,7 +2072,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2094,7 +2096,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2130,47 +2134,37 @@
     design-time-name="Package\MergeIntoGenericTable">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="151,42"
           Id="Package\MergeIntoGenericTable\Flat File Source"
-          TopLeft="171,56" />
+          TopLeft="155,55" />
         <NodeLayout
           Size="171,42"
           Id="Package\MergeIntoGenericTable\OLE DB Destination"
           TopLeft="139,165" />
         <EdgeLayout
           Id="Package\MergeIntoGenericTable.Paths[Flat File Source Output]"
-          TopLeft="246.5,98">
+          TopLeft="227.5,97">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-22,67"
+              EndConnector="0,68"
               Start="0,0"
-              End="-22,59.5">
+              End="0,60.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.5"
-                    Point2="0,33.5"
-                    Point3="-4,33.5" />
-                  <mssgle:LineSegment
-                    End="-18,33.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-18,33.5"
-                    Point2="-22,33.5"
-                    Point3="-22,37.5" />
-                  <mssgle:LineSegment
-                    End="-22,59.5" />
+                    End="0,60.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
