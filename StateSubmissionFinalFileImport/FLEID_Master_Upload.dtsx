@@ -8,12 +8,12 @@
   DTS:Description="SSIS Package Description"
   DTS:DTSID="{D111F148-23C3-4CDE-983D-E67525F4B065}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LastModifiedProductVersion="14.0.0500.272"
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="FLEID_Master_Upload"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{0FE5D1E1-AA5B-49A0-B24B-D28ABC8E5D40}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{DD76893B-789F-4EA3-813F-AB3A3ED65F50}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -48,7 +48,7 @@
               DTS:MaximumWidth="4"
               DTS:DataType="129"
               DTS:ObjectName="Year"
-              DTS:DTSID="{56A088F2-0898-45CA-B51D-03268BC5E1AE}"
+              DTS:DTSID="{C0D831AC-E375-40CB-A582-AD465FD6CE6E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -56,7 +56,7 @@
               DTS:MaximumWidth="6"
               DTS:DataType="129"
               DTS:ObjectName="Filler"
-              DTS:DTSID="{DACB9F90-9413-4CAE-BA22-0F3D39FAAAA4}"
+              DTS:DTSID="{E98F91CA-97DC-4E8D-9B56-1E6B81A01C23}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -64,7 +64,7 @@
               DTS:MaximumWidth="6"
               DTS:DataType="129"
               DTS:ObjectName="OPEID"
-              DTS:DTSID="{51F9FC5F-F0C6-41B3-923E-AA6784CBD218}"
+              DTS:DTSID="{3AA46B89-89A9-494D-9F67-73692982E474}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -72,7 +72,7 @@
               DTS:MaximumWidth="2"
               DTS:DataType="129"
               DTS:ObjectName="Filler1"
-              DTS:DTSID="{290078DA-BA1B-4D10-B7FF-6123A1F9856E}"
+              DTS:DTSID="{53CC6413-7466-45CB-BE5C-5F93A3134273}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -80,7 +80,7 @@
               DTS:MaximumWidth="7"
               DTS:DataType="129"
               DTS:ObjectName="PersonNum"
-              DTS:DTSID="{4E3F1BD1-523A-4772-8BB6-A7474E1086DC}"
+              DTS:DTSID="{CF6D8C60-D426-4755-81C1-10B84529FE52}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -88,7 +88,7 @@
               DTS:MaximumWidth="23"
               DTS:DataType="129"
               DTS:ObjectName="Filler2"
-              DTS:DTSID="{94D09EDB-5ED5-420B-86AD-E66EF622B2A4}"
+              DTS:DTSID="{A9932B2B-CAE8-447B-A088-E130CE3FCA6A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -96,7 +96,7 @@
               DTS:MaximumWidth="9"
               DTS:DataType="129"
               DTS:ObjectName="SSN"
-              DTS:DTSID="{73AC3F52-51EE-4C9B-9A48-14C9562D58AA}"
+              DTS:DTSID="{E0046E74-996C-4E19-B42C-EDD2A35D56B3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -104,7 +104,7 @@
               DTS:MaximumWidth="10"
               DTS:DataType="129"
               DTS:ObjectName="Filler3"
-              DTS:DTSID="{74E7973F-D80A-45B2-B0C1-BB09B0444D0F}"
+              DTS:DTSID="{DCCD4F4A-1A4E-499A-81C2-DB19D3451EBD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -112,7 +112,7 @@
               DTS:MaximumWidth="100"
               DTS:DataType="129"
               DTS:ObjectName="FirstName"
-              DTS:DTSID="{24AEE450-4484-4295-9939-A28770FCB7E0}"
+              DTS:DTSID="{90B1776D-77FD-4C4B-B7FD-C6830F71705E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -120,7 +120,7 @@
               DTS:MaximumWidth="100"
               DTS:DataType="129"
               DTS:ObjectName="LastName"
-              DTS:DTSID="{F1FA1202-EB97-43DA-B4DB-4A5DC6465BA3}"
+              DTS:DTSID="{97376E5F-CBE6-43D4-8AA3-FDE3414763EC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -128,7 +128,7 @@
               DTS:MaximumWidth="100"
               DTS:DataType="129"
               DTS:ObjectName="MaidenName"
-              DTS:DTSID="{B63B9C3A-5599-4754-B9DB-3E4C0216695E}"
+              DTS:DTSID="{0EE5203C-07DA-4151-9E9A-6F60870967BE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -136,7 +136,7 @@
               DTS:MaximumWidth="30"
               DTS:DataType="129"
               DTS:ObjectName="Appendage"
-              DTS:DTSID="{7DA66C3C-3421-4C8F-BDBE-DBA94594BD40}"
+              DTS:DTSID="{BF3B9B04-27EC-4467-9D70-D5258BC64E1D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -144,7 +144,7 @@
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:ObjectName="MiddleName"
-              DTS:DTSID="{983D9AA3-61D8-48B7-BBAB-34208E04B649}"
+              DTS:DTSID="{BECD73AB-7967-4A86-B71F-05DF4C0725F5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -152,7 +152,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="MiddleInitial"
-              DTS:DTSID="{46617F20-ACED-4E82-8371-4081A1FDC8F3}"
+              DTS:DTSID="{EBAA36CB-731F-4E88-8102-4917E882789A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -160,7 +160,7 @@
               DTS:MaximumWidth="8"
               DTS:DataType="129"
               DTS:ObjectName="DateofBirth"
-              DTS:DTSID="{DA89EE81-33FC-47C7-8F19-F085D683A68A}"
+              DTS:DTSID="{9BDFDE2E-40F9-42A2-878B-89A274DCF49B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -168,7 +168,7 @@
               DTS:MaximumWidth="8"
               DTS:DataType="129"
               DTS:ObjectName="Filler4"
-              DTS:DTSID="{8F2CD0EA-2DC9-40D4-B7AF-6088467B8B76}"
+              DTS:DTSID="{03E6C793-C8F3-440C-99AA-30AEA3000A7A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -176,7 +176,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="Gender"
-              DTS:DTSID="{D5EF3CB3-5A9B-4352-87C0-75222D2B431A}"
+              DTS:DTSID="{7346CDD4-F87C-4617-B02E-31A44468E055}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -184,7 +184,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="Race"
-              DTS:DTSID="{3F249284-175B-48F8-BAAD-5F7484CE149B}"
+              DTS:DTSID="{90477140-87C8-41B6-B10A-FE17E0C8E549}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -192,7 +192,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="RaceHispanic"
-              DTS:DTSID="{9F06F02C-AF70-439E-BD52-E4D683195819}"
+              DTS:DTSID="{11CBD3A9-2D06-4067-8218-7D2361C12030}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -200,7 +200,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="RaceWhite"
-              DTS:DTSID="{61736112-127C-4F9F-8197-D73680CB8240}"
+              DTS:DTSID="{A1528913-40C4-42EE-AEA3-9B1E132A2B3D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -208,7 +208,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="RaceAsian"
-              DTS:DTSID="{0FD59B8D-4130-473B-A209-2EA7B9388A7B}"
+              DTS:DTSID="{BB0B5D3D-FF7C-4D02-975D-52447B9678E3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -216,7 +216,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="RaceBlack"
-              DTS:DTSID="{63DEBF77-D6BA-4A48-9612-670CCBD4DFC1}"
+              DTS:DTSID="{687C0C79-F7CA-41DD-9329-2E44A4E7027F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -224,7 +224,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="RaceHawaiian"
-              DTS:DTSID="{37F8D8FF-3E9D-4F52-A2D4-100D4687FD1D}"
+              DTS:DTSID="{83CA2CEB-7D9C-41F1-B0DC-CFAAC2C23CBD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -232,7 +232,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="RaceAmericanIndian"
-              DTS:DTSID="{9EAAB9FC-3ACD-474C-8E3F-7AEAB679E4D6}"
+              DTS:DTSID="{2E626C1F-BEA8-4FFF-ACEC-8064264949E5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -240,7 +240,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="MultiBirthIndicator"
-              DTS:DTSID="{7DFAB359-2D02-4BF0-A436-7B418F9CC7B8}"
+              DTS:DTSID="{376ECC6E-1A1D-4005-BD6F-A27389B1C5DA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -248,7 +248,7 @@
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:ObjectName="BirthPlace"
-              DTS:DTSID="{BCC5C1E0-4459-47F9-B17D-D6B40A9D1A99}"
+              DTS:DTSID="{1B7E8BF7-3EE7-4B65-B661-FD8FAF53C346}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -256,7 +256,7 @@
               DTS:MaximumWidth="4"
               DTS:DataType="129"
               DTS:ObjectName="SourceIndicator"
-              DTS:DTSID="{427B078C-6BE7-4602-AF52-8F2226A3ABD5}"
+              DTS:DTSID="{F01AE496-A927-4FC6-9CCD-F4EFEB34BC8F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -264,7 +264,7 @@
               DTS:MaximumWidth="8"
               DTS:DataType="129"
               DTS:ObjectName="Date first entered Florida Institution"
-              DTS:DTSID="{37888BD2-576D-48E9-9D7E-C94A24E8AB8A}"
+              DTS:DTSID="{D4279174-4647-45EF-8113-C2C35D8E71ED}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -272,7 +272,7 @@
               DTS:MaximumWidth="8"
               DTS:DataType="129"
               DTS:ObjectName="Date first entered U.S. school"
-              DTS:DTSID="{1A3A3FD5-197B-4D8A-BA2A-067D58E60506}"
+              DTS:DTSID="{E01ACBEC-E17C-4B4F-9736-114DC475199F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -280,7 +280,7 @@
               DTS:MaximumWidth="8"
               DTS:DataType="129"
               DTS:ObjectName="Prior School of Enrollment"
-              DTS:DTSID="{495FEFAF-7CF9-46D1-9B1E-18966F212327}"
+              DTS:DTSID="{07D9F921-D83C-45ED-B28B-B130DE3DD02B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -288,7 +288,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="RecordType"
-              DTS:DTSID="{F13B0E80-FBF3-4506-A2BD-22DE620D339E}"
+              DTS:DTSID="{568050C9-AF29-4140-96C7-CA20C49F144E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -296,7 +296,7 @@
               DTS:MaximumWidth="8"
               DTS:DataType="129"
               DTS:ObjectName="Term"
-              DTS:DTSID="{455E20E8-E01D-4329-A9B6-B7763B703B8E}"
+              DTS:DTSID="{AB483B34-A978-4AC2-9DC3-565C7E62C285}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -304,7 +304,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="Column 32"
-              DTS:DTSID="{3051C1F3-E0D6-48CA-A7BE-4FA4F36EE587}"
+              DTS:DTSID="{2CF42DA9-4AD0-4DE3-87F7-E02B3B99A9F0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -312,7 +312,7 @@
               DTS:MaximumWidth="14"
               DTS:DataType="129"
               DTS:ObjectName="FLEID"
-              DTS:DTSID="{4C8EC5C9-D5AF-47E3-9336-61074A44292B}"
+              DTS:DTSID="{7B2D7210-A8BC-40B7-9F26-C892C5634883}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -321,7 +321,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Column 34"
-              DTS:DTSID="{7A3979CD-8F36-4AC8-86FF-1D7DC4F2F9F9}"
+              DTS:DTSID="{4F0FDC64-A95A-4E9E-AE1A-35B8A3AA92B6}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -372,7 +372,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
