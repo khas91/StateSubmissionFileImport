@@ -7,12 +7,12 @@
   DTS:CreatorName="FSCJ\klavalle"
   DTS:DTSID="{175728E9-A929-4B58-8867-020638EACA0F}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LastModifiedProductVersion="14.0.0500.272"
   DTS:LocaleID="1033"
   DTS:ObjectName="SDB_Import"
   DTS:PackageType="5"
-  DTS:VersionBuild="99"
-  DTS:VersionGUID="{A372304A-79EB-46BB-9691-5306E78724C7}">
+  DTS:VersionBuild="124"
+  DTS:VersionGUID="{9325E97A-6EF1-4D77-8925-10EBEC0DF8EE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -32,7 +32,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="Z:\State Submissions\SDB Submission\16-17\T3B2017\20170306b\student.t3B2017">
+          DTS:ConnectionString="Z:\Zaman\Old\State Submission\T2E2013 and T3B2013\SDB\02-04-2013\student.t3B2013">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -441,7 +441,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileLocation">
       <DTS:VariableValue
-        DTS:DataType="8">Z:\State Submissions\SDB Submission\16-17\T3B2017\20170306b\</DTS:VariableValue>
+        DTS:DataType="8">Z:\Zaman\Old\State Submission\T2E2013 and T3B2013\SDB\02-04-2013\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -450,7 +450,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileNameStudent">
       <DTS:VariableValue
-        DTS:DataType="8">student.t3B2017</DTS:VariableValue>
+        DTS:DataType="8">student.t3B2013</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -459,7 +459,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SubmissionDate">
       <DTS:VariableValue
-        DTS:DataType="8">3/6/2016</DTS:VariableValue>
+        DTS:DataType="8">2/4/2013</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -468,7 +468,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SubmissionType">
       <DTS:VariableValue
-        DTS:DataType="8">B</DTS:VariableValue>
+        DTS:DataType="8">LB</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -503,10 +503,16 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{A90778F2-98F5-4AEC-8C41-150845D15E5D}"
-          SQLTask:SqlStatementSource="declare @str varchar(50)&#xA;set @str = replace(?,'.','_')&#xA;&#xA;exec ('&#xA;select * into [History].[' + @str + ']&#xA;from Import.GenericImportedStudentSubmission&#xA;')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="declare @str varchar(50)&#xA;set @str = replace(?,'.','_')&#xA;declare @submissionType varchar(50) = ?&#xA;&#xA;IF LEFT(@submissionType, 1) = 'L'&#xA;BEGIN&#xA;&#x9;SET @str = @str + '_Load'&#xA;&#xA;END&#xA;&#xA;exec ('&#xA;select * into [History].[' + @str + ']&#xA;from Import.GenericImportedStudentSubmission&#xA;')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="@studentTableName"
             SQLTask:DtsVariableName="User::FileNameStudent"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@submissionType"
+            SQLTask:DtsVariableName="User::SubmissionType"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="129"
             SQLTask:ParameterSize="-1" />
@@ -552,7 +558,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1388,7 +1394,7 @@
     design-time-name="Package\Load Generic into StateSubmission Database">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="248,42"
           Id="Package\Load Generic into StateSubmission Database\GenericImportedStudentSubmission"
@@ -1416,7 +1422,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
