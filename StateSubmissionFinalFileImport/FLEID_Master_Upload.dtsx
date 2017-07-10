@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="FLEID_Master_Upload"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{DD76893B-789F-4EA3-813F-AB3A3ED65F50}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{0804AE12-71AD-4105-A7F3-E802D720B5D9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>

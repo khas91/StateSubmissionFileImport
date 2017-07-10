@@ -7,12 +7,12 @@
   DTS:CreatorName="FSCJ\klavalle"
   DTS:DTSID="{12343213-79A5-4525-A5A1-B5E0D939C67C}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LastModifiedProductVersion="14.0.0600.250"
   DTS:LocaleID="1033"
   DTS:ObjectName="ADB_Import"
   DTS:PackageType="5"
-  DTS:VersionBuild="91"
-  DTS:VersionGUID="{1CDC7E5D-A282-4A4F-9A72-B2C0ACBDF4B7}">
+  DTS:VersionBuild="92"
+  DTS:VersionGUID="{233C2E86-E491-431E-B571-5E33A5991ECC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -32,7 +32,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="Z:\State Submissions\ADB Submission\16-17\T2E2017\20170227\admiss.T2E2017">
+          DTS:ConnectionString="Z:\State Submissions\ADB Submission\16-17\T3E2017\20170526a - Final\admiss.T3E2017">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -71,7 +71,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileLocation">
       <DTS:VariableValue
-        DTS:DataType="8">Z:\State Submissions\ADB Submission\16-17\T2E2017\20170227\</DTS:VariableValue>
+        DTS:DataType="8">Z:\State Submissions\ADB Submission\16-17\T3E2017\20170526a - Final\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -80,7 +80,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileNameAdmissions">
       <DTS:VariableValue
-        DTS:DataType="8">admiss.T2E2017</DTS:VariableValue>
+        DTS:DataType="8">admiss.T3E2017</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -89,7 +89,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SubmissionDate">
       <DTS:VariableValue
-        DTS:DataType="8">2/27/2017</DTS:VariableValue>
+        DTS:DataType="8">6/7/2017</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -182,7 +182,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -482,19 +482,19 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="211,42"
+          Size="211.2,41.6"
           Id="Package\Clear Generic Student Table"
           TopLeft="44.5,5.5" />
         <NodeLayout
-          Size="213,42"
+          Size="212.8,41.6"
           Id="Package\Create History table for data"
           TopLeft="43.5,209.5" />
         <NodeLayout
-          Size="289,42"
+          Size="288.8,41.6"
           Id="Package\Load Generic into StateSubmission Database"
           TopLeft="5.50000000000003,107.5" />
         <NodeLayout
-          Size="230,42"
+          Size="230.4,41.6"
           Id="Package\Merge Import Data to RT1 table"
           TopLeft="35.0000000000001,311.5" />
         <EdgeLayout

@@ -7,12 +7,12 @@
   DTS:CreatorName="FSCJ\klavalle"
   DTS:DTSID="{175728E9-A929-4B58-8867-020638EACA0F}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.0500.272"
+  DTS:LastModifiedProductVersion="14.0.0600.250"
   DTS:LocaleID="1033"
   DTS:ObjectName="SDB_Import"
   DTS:PackageType="5"
-  DTS:VersionBuild="124"
-  DTS:VersionGUID="{9325E97A-6EF1-4D77-8925-10EBEC0DF8EE}">
+  DTS:VersionBuild="126"
+  DTS:VersionGUID="{A9AEA814-6E1B-45D4-B002-A0A9230D1F94}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -32,7 +32,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="Z:\Zaman\Old\State Submission\T2E2013 and T3B2013\SDB\02-04-2013\student.t3B2013">
+          DTS:ConnectionString="Z:\State Submissions\SDB Submission\16-17\T3E2017\20170612 - Final\student.t3E2017">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -441,7 +441,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileLocation">
       <DTS:VariableValue
-        DTS:DataType="8">Z:\Zaman\Old\State Submission\T2E2013 and T3B2013\SDB\02-04-2013\</DTS:VariableValue>
+        DTS:DataType="8">Z:\State Submissions\SDB Submission\16-17\T3E2017\20170612 - Final\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -450,7 +450,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileNameStudent">
       <DTS:VariableValue
-        DTS:DataType="8">student.t3B2013</DTS:VariableValue>
+        DTS:DataType="8">student.t3E2017</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -459,7 +459,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SubmissionDate">
       <DTS:VariableValue
-        DTS:DataType="8">2/4/2013</DTS:VariableValue>
+        DTS:DataType="8">6/12/2017</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -468,7 +468,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SubmissionType">
       <DTS:VariableValue
-        DTS:DataType="8">LB</DTS:VariableValue>
+        DTS:DataType="8">E</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -1124,47 +1124,47 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="211,42"
+          Size="211.2,41.6"
           Id="Package\Clear Generic Student Table"
           TopLeft="44.7,5.49999999999995" />
         <NodeLayout
-          Size="213,42"
+          Size="212.8,41.6"
           Id="Package\Create History table for data"
           TopLeft="43.9,208.7" />
         <NodeLayout
-          Size="290,42"
+          Size="289.6,41.6"
           Id="Package\Load Generic into StateSubmission Database"
           TopLeft="5.50000000000003,107.1" />
         <NodeLayout
-          Size="230,42"
+          Size="230.4,41.6"
           Id="Package\Merge Import Data to RT1 table"
           TopLeft="35.1000000000001,310.3" />
         <NodeLayout
-          Size="230,42"
+          Size="230.4,41.6"
           Id="Package\Merge Import Data to RT2 table"
           TopLeft="35.1000000000001,411.9" />
         <NodeLayout
-          Size="230,42"
+          Size="230.4,41.6"
           Id="Package\Merge Import Data to RT3 table"
           TopLeft="35.1000000000001,513.5" />
         <NodeLayout
-          Size="230,42"
+          Size="230.4,41.6"
           Id="Package\Merge Import Data to RT4 table"
           TopLeft="35.1000000000001,615.1" />
         <NodeLayout
-          Size="230,42"
+          Size="230.4,41.6"
           Id="Package\Merge Import Data to RT5 table"
           TopLeft="35.1000000000001,716.7" />
         <NodeLayout
-          Size="230,42"
+          Size="230.4,41.6"
           Id="Package\Merge Import Data to RT6 table"
           TopLeft="35.1000000000001,818.3" />
         <NodeLayout
-          Size="230,42"
+          Size="230.4,41.6"
           Id="Package\Merge Import Data to RT7 table"
           TopLeft="35.1000000000001,919.9" />
         <NodeLayout
-          Size="230,42"
+          Size="230.4,41.6"
           Id="Package\Merge Import Data to RT9 table"
           TopLeft="35.1000000000002,1021.5" />
         <EdgeLayout
