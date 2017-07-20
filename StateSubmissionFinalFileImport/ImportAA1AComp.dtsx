@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="ImportAA1AComp"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{DF79732D-17C7-44F9-BA37-8194A2813DB3}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{81574600-C5F1-4D5B-AFE7-9667C5A184DA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -42,7 +42,7 @@
           DTS:RowDelimiter="_x000D__x000A_"
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="Z:\AA1A Reports Historical\AA1A Reports Historical\AA1ACOMP.FILE.T3E2016">
+          DTS:ConnectionString="Z:\AA1A Reports Historical\AA1A Reports Historical\AA1ACOMP.FILE.T3E2005">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -50,7 +50,7 @@
               DTS:MaximumWidth="2"
               DTS:DataType="129"
               DTS:ObjectName="CollNum"
-              DTS:DTSID="{EB0E8E7B-D981-48B4-9312-1B9B50AF80A8}"
+              DTS:DTSID="{F753CBB1-2DC7-4EA5-B10F-B73189894B85}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -58,7 +58,7 @@
               DTS:MaximumWidth="10"
               DTS:DataType="129"
               DTS:ObjectName="StudentID"
-              DTS:DTSID="{CB334ECD-3079-4BA8-8BED-10B74457C2FC}"
+              DTS:DTSID="{F1BDBC40-7E8A-4206-9958-4BC78E400706}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -66,7 +66,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="Term"
-              DTS:DTSID="{6328EA63-8EA3-4E3E-9C5F-E815B81B508E}"
+              DTS:DTSID="{111F0419-095C-41B5-8D6A-13DA29CFC619}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -74,7 +74,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="Race"
-              DTS:DTSID="{162A086D-490C-43FD-9B78-7F5109653707}"
+              DTS:DTSID="{0253DF15-7672-4A7C-BF09-4648E1F27C3B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -82,7 +82,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="Gender"
-              DTS:DTSID="{9FFF149B-8F57-495A-AFF1-14A156D38784}"
+              DTS:DTSID="{DD979650-F67A-4210-83CA-0A0278D41C41}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -90,7 +90,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="Citizen"
-              DTS:DTSID="{9C213F1E-C941-4BF6-B460-403F60541A53}"
+              DTS:DTSID="{45DE0EA9-4CFC-47BD-A16B-20B7701CBDA5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -98,7 +98,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="Disable"
-              DTS:DTSID="{1A62142E-EC2C-4213-8498-DA7AFFF21A9E}"
+              DTS:DTSID="{ED2CA3B2-552E-45C8-BE65-F8A4FDB3E959}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -106,7 +106,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="LimitedEnglishProficiency"
-              DTS:DTSID="{F8F04D52-92CB-407A-B408-A7E423CF5C95}"
+              DTS:DTSID="{C8962716-F679-4CDA-A484-3153DF2735C2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -114,7 +114,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="Disadvantaged"
-              DTS:DTSID="{BDF5FDBC-EC68-4A8A-A3B6-91142D876505}"
+              DTS:DTSID="{1E4559B7-0793-45DB-949F-41961347AB53}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -122,7 +122,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="DualEnrolledFlag"
-              DTS:DTSID="{7A9CA7AF-478C-4D57-BA26-B9AFFEFA176F}"
+              DTS:DTSID="{B8833153-AC8C-4B93-99E0-FE1303D73BAD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -130,7 +130,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="CourseCooperativeFlag"
-              DTS:DTSID="{37A6E7FA-829D-4E92-BC5E-95FA92DEB3B4}"
+              DTS:DTSID="{B785327B-6671-4119-B6B7-11A00DBE6969}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -138,7 +138,7 @@
               DTS:MaximumWidth="3"
               DTS:DataType="129"
               DTS:ObjectName="CIPCluster"
-              DTS:DTSID="{8CEA8399-ED72-4034-ABC7-2CFDA1061648}"
+              DTS:DTSID="{2F288A26-E20C-44F7-8C22-9AA55736216E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -146,7 +146,7 @@
               DTS:MaximumWidth="6"
               DTS:DataType="129"
               DTS:ObjectName="CIP"
-              DTS:DTSID="{1A87BDD9-9BC0-4296-8CC6-EA62FCD84CF4}"
+              DTS:DTSID="{4A02C20B-758B-49D2-9EB2-5AAE11D98818}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -154,7 +154,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="Filler"
-              DTS:DTSID="{5C5A7D04-8D64-4F64-AA3D-865D39C1020B}"
+              DTS:DTSID="{A6B3F5FA-0FFB-4ED2-96EC-FB8C0780A996}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -162,7 +162,7 @@
               DTS:MaximumWidth="2"
               DTS:DataType="129"
               DTS:ObjectName="CIPUniqueID"
-              DTS:DTSID="{D7DF5E42-FD51-4781-A65C-EAED3953B055}"
+              DTS:DTSID="{27622388-2E16-425E-ABA6-5B9A86070B52}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -170,7 +170,7 @@
               DTS:MaximumWidth="30"
               DTS:DataType="129"
               DTS:ObjectName="ClassTitle"
-              DTS:DTSID="{E7862A53-84C3-4867-B748-B381818927FD}"
+              DTS:DTSID="{1114DD4A-C6F7-4CFF-B4F9-BAB91B80E3FF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -178,7 +178,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="ProgramOfStudyLevel"
-              DTS:DTSID="{9F110447-6F12-4CB8-B958-337D2F863A2C}"
+              DTS:DTSID="{85784387-2333-45F6-903C-30D5C2C8DAF3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -186,7 +186,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="HourType"
-              DTS:DTSID="{FEECF0DA-1A3C-4737-AC67-D23D225654E2}"
+              DTS:DTSID="{0678CF46-101F-40D3-AD31-5DAE88E7034B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -194,7 +194,7 @@
               DTS:MaximumWidth="4"
               DTS:DataType="129"
               DTS:ObjectName="AwardType"
-              DTS:DTSID="{6A931833-02C0-4613-A41E-C38C2CEC0DEA}"
+              DTS:DTSID="{200FD2BE-6DE5-4F9E-85FB-9C0D618C0227}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -202,7 +202,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="OCP"
-              DTS:DTSID="{B699A686-B35E-43C8-9F85-8A8C26537ACC}"
+              DTS:DTSID="{02999B26-EC65-42A4-B1BD-236945C56A7A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -210,7 +210,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="DegreeGranted"
-              DTS:DTSID="{F4DEE8E4-84B2-4C37-B0F6-6B7F0F952550}"
+              DTS:DTSID="{56CC7165-0F48-4E6D-A466-8F06F5158E7E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -218,7 +218,7 @@
               DTS:DataType="131"
               DTS:DataPrecision="18"
               DTS:ObjectName="TotalHours"
-              DTS:DTSID="{1670ED31-9196-4AB5-B37A-57F0FBE46098}"
+              DTS:DTSID="{0780D05A-50B6-40FB-9898-C627797F7760}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -226,7 +226,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="NonTraditionalindicator"
-              DTS:DTSID="{421104A4-3A06-41B0-813C-CF60E8B57174}"
+              DTS:DTSID="{F288FFA8-DCE7-48F7-B428-14B254EB3BDB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -234,23 +234,15 @@
               DTS:MaximumWidth="4"
               DTS:DataType="129"
               DTS:ObjectName="StateApprovedTeacherPrep"
-              DTS:DTSID="{0F1C1CF8-FB42-4E08-84C4-8A593A5C31B2}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="14"
-              DTS:MaximumWidth="14"
-              DTS:DataType="129"
-              DTS:ObjectName="FLEID"
-              DTS:DTSID="{7F5F5E59-F5D2-4754-B366-5DD8F75D7C7B}"
+              DTS:DTSID="{930B473E-0F23-44FF-A1B5-ED43C3D639B2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:MaximumWidth="200"
+              DTS:MaximumWidth="14"
               DTS:DataType="129"
-              DTS:ObjectName="Filler1"
-              DTS:DTSID="{97586898-7DB4-48BF-85FC-A80AFA6D096F}"
+              DTS:ObjectName="FLEID"
+              DTS:DTSID="{366726AF-90BD-4F23-8813-84567FF6D1F2}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -265,7 +257,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileFullPath">
       <DTS:VariableValue
-        DTS:DataType="8">Z:\AA1A Reports Historical\AA1A Reports Historical\AA1ACOMP.FILE.T3E2016</DTS:VariableValue>
+        DTS:DataType="8">Z:\AA1A Reports Historical\AA1A Reports Historical\AA1ACOMP.FILE.T3E2005</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -274,7 +266,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Year">
       <DTS:VariableValue
-        DTS:DataType="8">2016</DTS:VariableValue>
+        DTS:DataType="8">2005</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -796,29 +788,7 @@
                       length="14"
                       lineageId="Package\Data Flow Task 1\AA1A Comp File.Outputs[Flat File Source Output].Columns[FLEID]"
                       name="FLEID"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the data is in binary format."
-                          name="UseBinaryFormat">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task 1\AA1A Comp File.Outputs[Flat File Source Output].Columns[Filler1]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task 1\AA1A Comp File.Outputs[Flat File Source Output].ExternalColumns[Filler1]"
-                      length="200"
-                      lineageId="Package\Data Flow Task 1\AA1A Comp File.Outputs[Flat File Source Output].Columns[Filler1]"
-                      name="Filler1"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1030,12 +1000,6 @@
                       dataType="str"
                       length="14"
                       name="FLEID" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task 1\AA1A Comp File.Outputs[Flat File Source Output].ExternalColumns[Filler1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
-                      name="Filler1" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task 1\AA1A Comp File.Outputs[Flat File Source Output].ExternalColumns[DegreeGranted]"
                       codePage="1252"
@@ -1408,14 +1372,6 @@
                       externalMetadataColumnId="Package\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FLEID]"
                       lineageId="Package\Data Flow Task 1\AA1A Comp File.Outputs[Flat File Source Output].Columns[FLEID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Filler1]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="200"
-                      cachedName="Filler1"
-                      externalMetadataColumnId="Package\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Filler1]"
-                      lineageId="Package\Data Flow Task 1\AA1A Comp File.Outputs[Flat File Source Output].Columns[Filler1]" />
-                    <inputColumn
                       refId="Package\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DegreeGranted]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -1681,51 +1637,17 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="154,42"
-          Id="Package\Data Flow Task 1\AA1A Comp File"
-          TopLeft="5.5,5.5" />
+          Size="171,42"
+          Id="Package\Data Flow Task 1\OLE DB Destination"
+          TopLeft="171,219" />
         <NodeLayout
           Size="154,42"
           Id="Package\Data Flow Task 1\Derived Column"
           TopLeft="350,91" />
-        <EdgeLayout
-          Id="Package\Data Flow Task 1.Paths[Flat File Source Output]"
-          TopLeft="82.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="344.5,43.5"
-              Start="0,0"
-              End="344.5,36">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.75"
-                    Point2="0,21.75"
-                    Point3="4,21.75" />
-                  <mssgle:LineSegment
-                    End="340.5,21.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="340.5,21.75"
-                    Point2="344.5,21.75"
-                    Point3="344.5,25.75" />
-                  <mssgle:LineSegment
-                    End="344.5,36" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="171,42"
-          Id="Package\Data Flow Task 1\OLE DB Destination"
-          TopLeft="171,219" />
+          Size="154,42"
+          Id="Package\Data Flow Task 1\AA1A Comp File"
+          TopLeft="5.5,5.5" />
         <EdgeLayout
           Id="Package\Data Flow Task 1.Paths[Derived Column Output]"
           TopLeft="427,133">
@@ -1752,6 +1674,40 @@
                     Point3="-170.5,47" />
                   <mssgle:LineSegment
                     End="-170.5,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[Flat File Source Output]"
+          TopLeft="82.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="344.5,43.5"
+              Start="0,0"
+              End="344.5,36">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.75"
+                    Point2="0,21.75"
+                    Point3="4,21.75" />
+                  <mssgle:LineSegment
+                    End="340.5,21.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="340.5,21.75"
+                    Point2="344.5,21.75"
+                    Point3="344.5,25.75" />
+                  <mssgle:LineSegment
+                    End="344.5,36" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

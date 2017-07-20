@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="ImportAA1AEnroll"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{B597C92F-2DDF-44B0-A8D4-6B028A674479}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{F88CF9B6-1FA8-4D32-A4AB-586065AC94AD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -42,7 +42,7 @@
           DTS:RowDelimiter="_x000D__x000A_"
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="Z:\AA1A Reports Historical\AA1A Reports Historical\AA1AENRL.FILE.T3E2012">
+          DTS:ConnectionString="Z:\AA1A Reports Historical\AA1A Reports Historical\AA1AENRL.FILE.T3E2016">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -50,7 +50,7 @@
               DTS:MaximumWidth="2"
               DTS:DataType="129"
               DTS:ObjectName="CollNum"
-              DTS:DTSID="{1F1C392A-1465-43EB-AAB1-B64719F8E580}"
+              DTS:DTSID="{21C61308-B7AF-42F8-80DF-B5A21A7A931D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -58,7 +58,7 @@
               DTS:MaximumWidth="10"
               DTS:DataType="129"
               DTS:ObjectName="StudentID"
-              DTS:DTSID="{BFED3F59-0320-49D5-BB55-63F760ACF10F}"
+              DTS:DTSID="{25A7DD66-EE34-4336-A105-9D563DC3D5D0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -66,7 +66,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="Term"
-              DTS:DTSID="{955C867F-4520-4EF5-8743-35114EFD91C1}"
+              DTS:DTSID="{896DE826-6779-425B-8599-9A0CBA454DA1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -74,7 +74,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="Race"
-              DTS:DTSID="{B0FED392-60C6-474F-9938-678A556A6373}"
+              DTS:DTSID="{12F2E8BC-D129-4020-ACC3-5F5C0DD0E33B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -82,7 +82,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="Gender"
-              DTS:DTSID="{AA88EC6C-25E7-4542-962A-D2AF434109F5}"
+              DTS:DTSID="{CFC77B29-12CC-4333-ADCD-FA6DE99334B1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -90,7 +90,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="Citizen"
-              DTS:DTSID="{213E59A3-9A53-46CE-8153-F22E3FE1972D}"
+              DTS:DTSID="{4A800823-1C31-4191-82FE-F724DE66978A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -98,7 +98,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="Disable"
-              DTS:DTSID="{BA5B7038-296C-4C71-A613-F0677311A60C}"
+              DTS:DTSID="{905F5F8C-765C-48C1-9A75-6F0A925B649A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -106,7 +106,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="LimitedEnglishProficiency"
-              DTS:DTSID="{7B5FAC3F-8111-4F2D-AC85-F317A2B70701}"
+              DTS:DTSID="{662CB28A-CA91-4535-ADCE-406B180BD99B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -114,7 +114,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="Disadvantaged"
-              DTS:DTSID="{892D9630-EDAF-4DC3-92A3-6C30734B58EC}"
+              DTS:DTSID="{61C014FD-BADE-473A-9E8A-5402AF539588}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -122,7 +122,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="DualEnrolledFlag"
-              DTS:DTSID="{6619A679-3D6F-4058-8F94-6CA1946234CB}"
+              DTS:DTSID="{15B5CBCC-DCEC-4B8F-8C5C-17761E77C997}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -130,7 +130,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="CourseCooperativeFlag"
-              DTS:DTSID="{4C887DD2-ECB2-469F-AE7D-2682EB3BEA24}"
+              DTS:DTSID="{FF3F81F8-BCE3-4035-B24D-44A0381972C9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -138,7 +138,7 @@
               DTS:MaximumWidth="3"
               DTS:DataType="129"
               DTS:ObjectName="CIPCluster"
-              DTS:DTSID="{B2073762-4AFE-4F0C-AC5C-763F974199EE}"
+              DTS:DTSID="{02EDB4FF-DAE8-4C99-9AD5-1C367CD89D1E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -146,7 +146,7 @@
               DTS:MaximumWidth="6"
               DTS:DataType="129"
               DTS:ObjectName="CIP"
-              DTS:DTSID="{85D09F17-46A6-4A4F-9D55-618F3BDC1A78}"
+              DTS:DTSID="{83E36C60-A73A-42D2-91BA-73A898DB84EE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -154,7 +154,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="Filler"
-              DTS:DTSID="{1BE96340-D7E2-446D-AC56-87BA8FB0F9C3}"
+              DTS:DTSID="{55846D7A-EC5E-44B8-9882-8099081D75CA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -162,7 +162,7 @@
               DTS:MaximumWidth="2"
               DTS:DataType="129"
               DTS:ObjectName="CIPUniqueID"
-              DTS:DTSID="{DC3647C6-95C7-49A9-9BEC-06E78212FD14}"
+              DTS:DTSID="{64CCB435-8E67-474C-B37B-35B6C7A38E27}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -170,7 +170,7 @@
               DTS:MaximumWidth="30"
               DTS:DataType="129"
               DTS:ObjectName="ClassTitle"
-              DTS:DTSID="{7C4DDF1F-0FEC-4B11-8627-E1EB6B632672}"
+              DTS:DTSID="{7A003F25-4ACC-4C90-A6E6-F5152F308EC2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -178,7 +178,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="ProgramOfStudyLevel"
-              DTS:DTSID="{0E0347DB-219B-4848-9363-2B58850FB2D5}"
+              DTS:DTSID="{87A4D6CD-7539-4AA1-9136-52EFF14E5EFF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -186,7 +186,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="HourType"
-              DTS:DTSID="{08F6D76C-1E06-4FC2-8E23-43930417171A}"
+              DTS:DTSID="{6B1E161E-DA2B-4B71-B442-982079D2BFB2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -194,7 +194,7 @@
               DTS:DataType="131"
               DTS:DataPrecision="18"
               DTS:ObjectName="TotalHours"
-              DTS:DTSID="{CE330E16-060F-420E-9C69-BF2F3A859452}"
+              DTS:DTSID="{72CD7150-4EE5-4E34-B082-8C283304C9D1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -202,7 +202,7 @@
               DTS:MaximumWidth="1"
               DTS:DataType="129"
               DTS:ObjectName="NonTraditionalindicator"
-              DTS:DTSID="{C5F9FE01-3D1A-4AC2-A052-175ED2783F28}"
+              DTS:DTSID="{0C72F8E2-6047-4E85-BE06-860E6CC2129E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -210,23 +210,15 @@
               DTS:MaximumWidth="4"
               DTS:DataType="129"
               DTS:ObjectName="StateApprovedTeacherPrep"
-              DTS:DTSID="{C1631374-3908-4F0A-BD62-37939FD6FE91}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="14"
-              DTS:MaximumWidth="14"
-              DTS:DataType="129"
-              DTS:ObjectName="FLEID"
-              DTS:DTSID="{F9FBC49E-5298-4BB5-B4B1-0C4B415B46F0}"
+              DTS:DTSID="{171BCD39-A830-4FD1-A1F2-69E776687BBC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:MaximumWidth="200"
+              DTS:MaximumWidth="14"
               DTS:DataType="129"
-              DTS:ObjectName="Filler1"
-              DTS:DTSID="{7664D921-3647-4ECB-96CE-F0F75DD28C47}"
+              DTS:ObjectName="FLEID"
+              DTS:DTSID="{C6D5141A-229E-450F-A093-D38A71601306}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -241,7 +233,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileFullPath">
       <DTS:VariableValue
-        DTS:DataType="8">Z:\AA1A Reports Historical\AA1A Reports Historical\AA1AENRL.FILE.T3E2012</DTS:VariableValue>
+        DTS:DataType="8">Z:\AA1A Reports Historical\AA1A Reports Historical\AA1AENRL.FILE.T3E2016</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -250,7 +242,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Year">
       <DTS:VariableValue
-        DTS:DataType="8">2012</DTS:VariableValue>
+        DTS:DataType="8">2016</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -772,29 +764,7 @@
                       length="14"
                       lineageId="Package\Data Flow Task 1\AA1AEnrollFile.Outputs[Flat File Source Output].Columns[FLEID]"
                       name="FLEID"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the data is in binary format."
-                          name="UseBinaryFormat">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task 1\AA1AEnrollFile.Outputs[Flat File Source Output].Columns[Filler1]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task 1\AA1AEnrollFile.Outputs[Flat File Source Output].ExternalColumns[Filler1]"
-                      length="200"
-                      lineageId="Package\Data Flow Task 1\AA1AEnrollFile.Outputs[Flat File Source Output].Columns[Filler1]"
-                      name="Filler1"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -940,12 +910,6 @@
                       dataType="str"
                       length="14"
                       name="FLEID" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task 1\AA1AEnrollFile.Outputs[Flat File Source Output].ExternalColumns[Filler1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
-                      name="Filler1" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1300,14 +1264,6 @@
                       cachedName="FLEID"
                       externalMetadataColumnId="Package\Data Flow Task 1\Destination - AA1AENRL.Inputs[Destination Input].ExternalColumns[FLEID]"
                       lineageId="Package\Data Flow Task 1\AA1AEnrollFile.Outputs[Flat File Source Output].Columns[FLEID]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task 1\Destination - AA1AENRL.Inputs[Destination Input].Columns[Filler1]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="200"
-                      cachedName="Filler1"
-                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - AA1AENRL.Inputs[Destination Input].ExternalColumns[Filler1]"
-                      lineageId="Package\Data Flow Task 1\AA1AEnrollFile.Outputs[Flat File Source Output].Columns[Filler1]" />
                     <inputColumn
                       refId="Package\Data Flow Task 1\Destination - AA1AENRL.Inputs[Destination Input].Columns[Year]"
                       cachedCodepage="1252"
