@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="PDB_Import"
   DTS:PackageType="5"
-  DTS:VersionBuild="104"
-  DTS:VersionGUID="{10C22366-5BC0-4EB6-9035-F932DF3E30B3}">
+  DTS:VersionBuild="111"
+  DTS:VersionGUID="{B51C55DA-0191-4C53-B16D-0BB1A3A51549}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -32,7 +32,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="Z:\State Submissions\PDB Submission\16-17\T3E2017\20170602 - Final\person.t3e2017">
+          DTS:ConnectionString="Z:\State Submissions\PDB Submission\13-14\PDB_T4E2014\person.t4e2014">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -62,7 +62,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="Z:\State Submissions\PDB Submission\16-17\T3E2017\20170602 - Final\person.t3e2017">
+          DTS:ConnectionString="Z:\State Submissions\PDB Submission\13-14\PDB_T4E2014\person.t4e2014">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -101,7 +101,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileLocation">
       <DTS:VariableValue
-        DTS:DataType="8">Z:\State Submissions\PDB Submission\16-17\T3E2017\20170602 - Final\</DTS:VariableValue>
+        DTS:DataType="8">Z:\State Submissions\PDB Submission\13-14\PDB_T4E2014\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -110,7 +110,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileNameAdmissions">
       <DTS:VariableValue
-        DTS:DataType="8">person.t3e2017</DTS:VariableValue>
+        DTS:DataType="8">person.t4e2014</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -119,7 +119,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SubmissionDate">
       <DTS:VariableValue
-        DTS:DataType="8">3/3/2017</DTS:VariableValue>
+        DTS:DataType="8">8/11/2014</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -171,6 +171,1414 @@
             SQLTask:DataType="129"
             SQLTask:ParameterSize="-1" />
         </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import to RT6"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{10699518-4475-403F-9509-6BBA1D4F9E82}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import to RT6"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import to RT6\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Import to RT6\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import to RT6\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Import to RT6\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to RT6\Derived Column.Outputs[Derived Column Output].Columns[SubmissionDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import to RT6\Derived Column.Outputs[Derived Column Output].Columns[SubmissionDate]"
+                      name="SubmissionDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)@[User::SubmissionDate]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)@[User::SubmissionDate]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import to RT6\Derived Column.Outputs[Derived Column Output].Columns[SubmissionType]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="2"
+                      lineageId="Package\Import to RT6\Derived Column.Outputs[Derived Column Output].Columns[SubmissionType]"
+                      name="SubmissionType"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,2,1252)@[User::SubmissionType]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,2,1252)@[User::SubmissionType]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import to RT6\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Import to RT6\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to RT6\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import to RT6\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import to RT6\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import to RT6\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import to RT6\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[PDB].[RecordType6]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import to RT6\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VULCAN.StateSubmission]"
+                  connectionManagerRefId="Package.ConnectionManagers[VULCAN.StateSubmission]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[0110_Reporting_Institution_Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="0110_Reporting_Institution_Code"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[0110_Reporting_Institution_Code]"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[0110_Reporting_Institution_Code]" />
+                    <inputColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Record_Type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Record_Type"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Record_Type]"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[Record_Type]" />
+                    <inputColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[0130_Person_Identification_Number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="0130_Person_Identification_Number"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[0130_Person_Identification_Number]"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[0130_Person_Identification_Number]" />
+                    <inputColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[0140_Organizational_Unit_and_GL_Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="13"
+                      cachedName="0140_Organizational_Unit_and_GL_Code"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[0140_Organizational_Unit_and_GL_Code]"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[0140_Organizational_Unit_and_GL_Code]" />
+                    <inputColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[1009_Primary_Activity_Occupational_Activity_Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="1009_Primary_Activity_Occupational_Activity_Code"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[1009_Primary_Activity_Occupational_Activity_Code]"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[1009_Primary_Activity_Occupational_Activity_Code]" />
+                    <inputColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[6005_Salary_Type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="6005_Salary_Type"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[6005_Salary_Type]"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[6005_Salary_Type]" />
+                    <inputColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[6010_Salary_Amount]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="6010_Salary_Amount"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[6010_Salary_Amount]"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[6010_Salary_Amount]" />
+                    <inputColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[0120_Term_Identifier]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="0120_Term_Identifier"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[0120_Term_Identifier]"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[0120_Term_Identifier]" />
+                    <inputColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Florida_Education_ID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="14"
+                      cachedName="Florida_Education_ID"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Florida_Education_ID]"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[Florida_Education_ID]" />
+                    <inputColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FILLER1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="89"
+                      cachedName="FILLER1"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FILLER1]"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[FILLER1]" />
+                    <inputColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SubmissionDate]"
+                      cachedDataType="dbDate"
+                      cachedName="SubmissionDate"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubmissionDate]"
+                      lineageId="Package\Import to RT6\Derived Column.Outputs[Derived Column Output].Columns[SubmissionDate]" />
+                    <inputColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SubmissionType]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="SubmissionType"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubmissionType]"
+                      lineageId="Package\Import to RT6\Derived Column.Outputs[Derived Column Output].Columns[SubmissionType]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowID]"
+                      dataType="guid"
+                      name="RowID" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[0110_Reporting_Institution_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="0110_Reporting_Institution_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Record_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Record_Type" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[0130_Person_Identification_Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="0130_Person_Identification_Number" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[0140_Organizational_Unit_and_GL_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="13"
+                      name="0140_Organizational_Unit_and_GL_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[1009_Primary_Activity_Occupational_Activity_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="1009_Primary_Activity_Occupational_Activity_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[6005_Salary_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="6005_Salary_Type" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[6010_Salary_Amount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="6010_Salary_Amount" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[0120_Term_Identifier]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="0120_Term_Identifier" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Florida_Education_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      name="Florida_Education_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FILLER1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="89"
+                      name="FILLER1" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubmissionType]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SubmissionType" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubmissionDate]"
+                      dataType="dbTimeStamp"
+                      name="SubmissionDate" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="RowStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
+                      dataType="dbTimeStamp"
+                      name="InsertDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import to RT6\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import to RT6\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import to RT6\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import to RT6\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Import].[vRecordType6Personnel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import to RT6\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VULCAN.StateSubmission]"
+                  connectionManagerRefId="Package.ConnectionManagers[VULCAN.StateSubmission]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[0110_Reporting_Institution_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[0110_Reporting_Institution_Code]"
+                      length="7"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[0110_Reporting_Institution_Code]"
+                      name="0110_Reporting_Institution_Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[Record_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Record_Type]"
+                      length="1"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[Record_Type]"
+                      name="Record_Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[0130_Person_Identification_Number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[0130_Person_Identification_Number]"
+                      length="10"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[0130_Person_Identification_Number]"
+                      name="0130_Person_Identification_Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[0140_Organizational_Unit_and_GL_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[0140_Organizational_Unit_and_GL_Code]"
+                      length="13"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[0140_Organizational_Unit_and_GL_Code]"
+                      name="0140_Organizational_Unit_and_GL_Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[1009_Primary_Activity_Occupational_Activity_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[1009_Primary_Activity_Occupational_Activity_Code]"
+                      length="2"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[1009_Primary_Activity_Occupational_Activity_Code]"
+                      name="1009_Primary_Activity_Occupational_Activity_Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[6005_Salary_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[6005_Salary_Type]"
+                      length="1"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[6005_Salary_Type]"
+                      name="6005_Salary_Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[6010_Salary_Amount]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[6010_Salary_Amount]"
+                      length="8"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[6010_Salary_Amount]"
+                      name="6010_Salary_Amount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[0120_Term_Identifier]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[0120_Term_Identifier]"
+                      length="5"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[0120_Term_Identifier]"
+                      name="0120_Term_Identifier"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[Florida_Education_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Florida_Education_ID]"
+                      length="14"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[Florida_Education_ID]"
+                      name="Florida_Education_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[FILLER1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FILLER1]"
+                      length="89"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].Columns[FILLER1]"
+                      name="FILLER1"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[0110_Reporting_Institution_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="0110_Reporting_Institution_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Record_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Record_Type" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[0130_Person_Identification_Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="0130_Person_Identification_Number" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[0140_Organizational_Unit_and_GL_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="13"
+                      name="0140_Organizational_Unit_and_GL_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[1009_Primary_Activity_Occupational_Activity_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="1009_Primary_Activity_Occupational_Activity_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[6005_Salary_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="6005_Salary_Type" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[6010_Salary_Amount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="6010_Salary_Amount" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[0120_Term_Identifier]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="0120_Term_Identifier" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Florida_Education_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      name="Florida_Education_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FILLER1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="89"
+                      name="FILLER1" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[0110_Reporting_Institution_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[0110_Reporting_Institution_Code]"
+                      name="0110_Reporting_Institution_Code" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Record_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Record_Type]"
+                      name="Record_Type" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[0130_Person_Identification_Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[0130_Person_Identification_Number]"
+                      name="0130_Person_Identification_Number" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[0140_Organizational_Unit_and_GL_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="13"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[0140_Organizational_Unit_and_GL_Code]"
+                      name="0140_Organizational_Unit_and_GL_Code" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[1009_Primary_Activity_Occupational_Activity_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[1009_Primary_Activity_Occupational_Activity_Code]"
+                      name="1009_Primary_Activity_Occupational_Activity_Code" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[6005_Salary_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[6005_Salary_Type]"
+                      name="6005_Salary_Type" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[6010_Salary_Amount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[6010_Salary_Amount]"
+                      name="6010_Salary_Amount" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[0120_Term_Identifier]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[0120_Term_Identifier]"
+                      name="0120_Term_Identifier" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Florida_Education_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Florida_Education_ID]"
+                      name="Florida_Education_ID" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FILLER1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="89"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FILLER1]"
+                      name="FILLER1" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import to RT6.Paths[Derived Column Output]"
+              endId="Package\Import to RT6\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Import to RT6\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Import to RT6.Paths[OLE DB Source Output]"
+              endId="Package\Import to RT6\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Import to RT6\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import to RT7"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{4f608071-3538-4dcb-b693-ee9cff850cf4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import to RT7"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import to RT7\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Import to RT7\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import to RT7\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Import to RT7\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to RT7\Derived Column.Outputs[Derived Column Output].Columns[SubmissionDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import to RT7\Derived Column.Outputs[Derived Column Output].Columns[SubmissionDate]"
+                      name="SubmissionDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)@[User::SubmissionDate]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)@[User::SubmissionDate]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import to RT7\Derived Column.Outputs[Derived Column Output].Columns[SubmissionType]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="2"
+                      lineageId="Package\Import to RT7\Derived Column.Outputs[Derived Column Output].Columns[SubmissionType]"
+                      name="SubmissionType"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,2,1252)@[User::SubmissionType]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,2,1252)@[User::SubmissionType]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import to RT7\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Import to RT7\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to RT7\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import to RT7\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import to RT7\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import to RT7\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import to RT7\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[PDB].[RecordType7]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import to RT7\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VULCAN.StateSubmission]"
+                  connectionManagerRefId="Package.ConnectionManagers[VULCAN.StateSubmission]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[0110_Reporting_Institution_Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="0110_Reporting_Institution_Code"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[0110_Reporting_Institution_Code]"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[0110_Reporting_Institution_Code]" />
+                    <inputColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Record_Type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Record_Type"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Record_Type]"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[Record_Type]" />
+                    <inputColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[0130_Person_Identification_Number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="0130_Person_Identification_Number"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[0130_Person_Identification_Number]"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[0130_Person_Identification_Number]" />
+                    <inputColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[0140_Organizational_Unit_and_GL_Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="13"
+                      cachedName="0140_Organizational_Unit_and_GL_Code"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[0140_Organizational_Unit_and_GL_Code]"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[0140_Organizational_Unit_and_GL_Code]" />
+                    <inputColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[0120_Term_Identifier]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="0120_Term_Identifier"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[0120_Term_Identifier]"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[0120_Term_Identifier]" />
+                    <inputColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Florida_Education_ID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="14"
+                      cachedName="Florida_Education_ID"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Florida_Education_ID]"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[Florida_Education_ID]" />
+                    <inputColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SubmissionDate]"
+                      cachedDataType="dbDate"
+                      cachedName="SubmissionDate"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubmissionDate]"
+                      lineageId="Package\Import to RT7\Derived Column.Outputs[Derived Column Output].Columns[SubmissionDate]" />
+                    <inputColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SubmissionType]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="SubmissionType"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubmissionType]"
+                      lineageId="Package\Import to RT7\Derived Column.Outputs[Derived Column Output].Columns[SubmissionType]" />
+                    <inputColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[7005_Selected_Benefits_Type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="7005_Selected_Benefits_Type"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[7005_Selected_Benefits_Type]"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[7005_Selected_Benefits_Type]" />
+                    <inputColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[7010_Selected_Benefits_Value]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="7010_Selected_Benefits_Value"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[7010_Selected_Benefits_Value]"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[7010_Selected_Benefits_Value]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowID]"
+                      dataType="guid"
+                      name="RowID" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[0110_Reporting_Institution_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="0110_Reporting_Institution_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Record_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Record_Type" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[0130_Person_Identification_Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="0130_Person_Identification_Number" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[0140_Organizational_Unit_and_GL_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="13"
+                      name="0140_Organizational_Unit_and_GL_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[0120_Term_Identifier]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="0120_Term_Identifier" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Florida_Education_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      name="Florida_Education_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FILLER1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="91"
+                      name="FILLER1" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubmissionType]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SubmissionType" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubmissionDate]"
+                      dataType="dbTimeStamp"
+                      name="SubmissionDate" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="RowStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
+                      dataType="dbTimeStamp"
+                      name="InsertDate" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[7005_Selected_Benefits_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="7005_Selected_Benefits_Type" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[7010_Selected_Benefits_Value]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="7010_Selected_Benefits_Value" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import to RT7\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import to RT7\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import to RT7\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import to RT7\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Import].[vRecordType7Personnel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import to RT7\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VULCAN.StateSubmission]"
+                  connectionManagerRefId="Package.ConnectionManagers[VULCAN.StateSubmission]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[0110_Reporting_Institution_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[0110_Reporting_Institution_Code]"
+                      length="7"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[0110_Reporting_Institution_Code]"
+                      name="0110_Reporting_Institution_Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[Record_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Record_Type]"
+                      length="1"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[Record_Type]"
+                      name="Record_Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[0130_Person_Identification_Number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[0130_Person_Identification_Number]"
+                      length="10"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[0130_Person_Identification_Number]"
+                      name="0130_Person_Identification_Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[0140_Organizational_Unit_and_GL_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[0140_Organizational_Unit_and_GL_Code]"
+                      length="13"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[0140_Organizational_Unit_and_GL_Code]"
+                      name="0140_Organizational_Unit_and_GL_Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[0120_Term_Identifier]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[0120_Term_Identifier]"
+                      length="5"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[0120_Term_Identifier]"
+                      name="0120_Term_Identifier"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[Florida_Education_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Florida_Education_ID]"
+                      length="14"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[Florida_Education_ID]"
+                      name="Florida_Education_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[7005_Selected_Benefits_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[7005_Selected_Benefits_Type]"
+                      length="1"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[7005_Selected_Benefits_Type]"
+                      name="7005_Selected_Benefits_Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[7010_Selected_Benefits_Value]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[7010_Selected_Benefits_Value]"
+                      length="8"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].Columns[7010_Selected_Benefits_Value]"
+                      name="7010_Selected_Benefits_Value"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[0110_Reporting_Institution_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="0110_Reporting_Institution_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Record_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Record_Type" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[0130_Person_Identification_Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="0130_Person_Identification_Number" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[0140_Organizational_Unit_and_GL_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="13"
+                      name="0140_Organizational_Unit_and_GL_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[0120_Term_Identifier]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="0120_Term_Identifier" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Florida_Education_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      name="Florida_Education_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FILLER1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="91"
+                      name="FILLER1" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[7005_Selected_Benefits_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="7005_Selected_Benefits_Type" />
+                    <externalMetadataColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[7010_Selected_Benefits_Value]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="7010_Selected_Benefits_Value" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[0110_Reporting_Institution_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[0110_Reporting_Institution_Code]"
+                      name="0110_Reporting_Institution_Code" />
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Record_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Record_Type]"
+                      name="Record_Type" />
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[0130_Person_Identification_Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[0130_Person_Identification_Number]"
+                      name="0130_Person_Identification_Number" />
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[0140_Organizational_Unit_and_GL_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="13"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[0140_Organizational_Unit_and_GL_Code]"
+                      name="0140_Organizational_Unit_and_GL_Code" />
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[7005_Selected_Benefits_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[7005_Selected_Benefits_Type]"
+                      name="7005_Selected_Benefits_Type" />
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[7010_Selected_Benefits_Value]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[7010_Selected_Benefits_Value]"
+                      name="7010_Selected_Benefits_Value" />
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[0120_Term_Identifier]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[0120_Term_Identifier]"
+                      name="0120_Term_Identifier" />
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Florida_Education_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Florida_Education_ID]"
+                      name="Florida_Education_ID" />
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import to RT7.Paths[Derived Column Output]"
+              endId="Package\Import to RT7\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Import to RT7\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Import to RT7.Paths[OLE DB Source Output]"
+              endId="Package\Import to RT7\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Import to RT7\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -584,6 +1992,22 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 5"
       DTS:To="Package\Merge Import Data to RT1 table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{67985866-2D55-4B1E-943C-1B383BEFA612}"
+      DTS:From="Package\Merge Import Data to RT4 table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Import to RT6" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{4BCFFC14-610B-49AE-B7D2-C54BC227AA84}"
+      DTS:From="Package\Import to RT6"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\Import to RT7" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -596,7 +2020,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="220,41.6"
           Id="Package\Clear Generic Personnel Table"
@@ -757,6 +2181,58 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="144.8,41.6"
+          Id="Package\Import to RT6"
+          TopLeft="300.00000510897,623.215691536768" />
+        <NodeLayout
+          Size="144.8,41.6"
+          Id="Package\Import to RT7"
+          TopLeft="501.904770452149,620.156867964458" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="265.97142858116,640.851963411153">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="34.0285765278098,0"
+              Start="0,0"
+              End="26.5285765278098,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="26.5285765278098,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="444.80000510897,642.486279750613">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="57.1047653431794,0"
+              Start="0,0"
+              End="49.6047653431794,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="49.6047653431794,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -764,7 +2240,7 @@
     design-time-name="Package\Load Generic into StateSubmission Database">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="256.8,41.6"
           Id="Package\Load Generic into StateSubmission Database\GenericImportedPersonnelSubmission"
@@ -792,7 +2268,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -808,6 +2286,234 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Import to RT6">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Import to RT6\OLE DB Source"
+          TopLeft="117.714287718948,54.4470595871289" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Import to RT6\Derived Column"
+          TopLeft="137.142859478386,125.411766464735" />
+        <EdgeLayout
+          Id="Package\Import to RT6.Paths[OLE DB Source Output]"
+          TopLeft="192.514287718948,96.0470595871289">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21.0285717594381,29.3647068776061"
+              Start="0,0"
+              End="21.0285717594381,21.8647068776061">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.6823534388031" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.6823534388031"
+                    Point2="0,14.6823534388031"
+                    Point3="4,14.6823534388031" />
+                  <mssgle:LineSegment
+                    End="17.0285717594381,14.6823534388031" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.0285717594381,14.6823534388031"
+                    Point2="21.0285717594381,14.6823534388031"
+                    Point3="21.0285717594381,18.6823534388031" />
+                  <mssgle:LineSegment
+                    End="21.0285717594381,21.8647068776061" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Import to RT6\OLE DB Destination"
+          TopLeft="164.000002792903,203.717649915887" />
+        <EdgeLayout
+          Id="Package\Import to RT6.Paths[Derived Column Output]"
+          TopLeft="213.542859478386,167.011766464735">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.6571433145173,36.7058834511516"
+              Start="0,0"
+              End="35.6571433145173,29.2058834511516">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.3529417255758" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.3529417255758"
+                    Point2="0,18.3529417255758"
+                    Point3="4,18.3529417255758" />
+                  <mssgle:LineSegment
+                    End="31.6571433145173,18.3529417255758" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.6571433145173,18.3529417255758"
+                    Point2="35.6571433145173,18.3529417255758"
+                    Point3="35.6571433145173,22.3529417255758" />
+                  <mssgle:LineSegment
+                    End="35.6571433145173,29.2058834511516" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import to RT6\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import to RT6\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Import to RT7">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Import to RT7\OLE DB Destination"
+          TopLeft="164.000002792903,203.717649915887" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Import to RT7\Derived Column"
+          TopLeft="137.142859478386,125.411766464735" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Import to RT7\OLE DB Source"
+          TopLeft="117.714287718948,54.4470595871289" />
+        <EdgeLayout
+          Id="Package\Import to RT7.Paths[Derived Column Output]"
+          TopLeft="213.542859478386,167.011766464735">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.6571433145173,36.7058834511516"
+              Start="0,0"
+              End="35.6571433145173,29.2058834511516">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.3529417255758" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.3529417255758"
+                    Point2="0,18.3529417255758"
+                    Point3="4,18.3529417255758" />
+                  <mssgle:LineSegment
+                    End="31.6571433145173,18.3529417255758" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.6571433145173,18.3529417255758"
+                    Point2="35.6571433145173,18.3529417255758"
+                    Point3="35.6571433145173,22.3529417255758" />
+                  <mssgle:LineSegment
+                    End="35.6571433145173,29.2058834511516" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import to RT7.Paths[OLE DB Source Output]"
+          TopLeft="192.514287718948,96.0470595871289">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21.0285717594381,29.3647068776061"
+              Start="0,0"
+              End="21.0285717594381,21.8647068776061">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.6823534388031" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.6823534388031"
+                    Point2="0,14.6823534388031"
+                    Point3="4,14.6823534388031" />
+                  <mssgle:LineSegment
+                    End="17.0285717594381,14.6823534388031" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.0285717594381,14.6823534388031"
+                    Point2="21.0285717594381,14.6823534388031"
+                    Point3="21.0285717594381,18.6823534388031" />
+                  <mssgle:LineSegment
+                    End="21.0285717594381,21.8647068776061" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import to RT7\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import to RT7\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
